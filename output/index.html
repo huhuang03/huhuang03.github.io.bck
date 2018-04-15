@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="This is a demo site for Nikola.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Nikola Site</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="https://example.com/">
+<link rel="next" href="index-1.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/rare-grammar/" type="text/html">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://example.com/">
+
+                <span id="blog-title">My Nikola Site</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archive</a>
+                </li>
+<li>
+<a href="categories/">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/rare-grammar/" class="u-url">不普通语法</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/rare-grammar/" rel="bookmark"><time class="published dt-published" datetime="2018-04-11T00:00:00+08:00" title="2018-04-11 00:00">2018-04-11 00:00</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-org9247f4a" class="outline-2">
+<h2 id="org9247f4a">Js</h2>
+<div class="outline-text-2" id="text-org9247f4a">
+</div>
+<div id="outline-container-org5158fb2" class="outline-3">
+<h3 id="org5158fb2">方法参数中有大括号</h3>
+<div class="outline-text-3" id="text-org5158fb2">
+<p>
+为js6中 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring">Object destructuring</a>。用于方法参数中还可以给对象中的属性提供默认值
+</p>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/huawei_android_rom/" class="u-url">华为手机刷官方Rom</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/huawei_android_rom/" rel="bookmark"><time class="published dt-published" datetime="2018-04-01T00:00:00+08:00" title="2018-04-01 00:00">2018-04-01 00:00</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>
+手上一台华为的机子，想Root。但是kingRoot无法成功，只能先尝试刷官方Room。然后重新kingroot了。
+</p>
+
+<p>
+操作系统为Mac。
+</p>
+
+<p>
+首先<a href="https://developers.google.com/android/images#mysidspr">下载一个rom</a>吧。我也不知道应该哪个，就随便下个4.3版本的系统试试吧。选择 <code>4.3 (JLS36C)</code> 。
+用迅雷下载确实可以大大提高下载速度，我有8M/s
+</p>
+
+<p>
+华为比较坑的是，解锁fastboot需要14天登录华为账号，我们只有14天之后再来看了！2018年04月01日。
+</p>
+
+<p>
+顺便加上一些命令
+</p>
+<div class="highlight"><pre><span></span># 重进进入fastboot模式
+adb reboot bootloader
+# 查询bootloader状态（是否锁住）
+fasboot oem get-bootinfo
+</pre></div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/hello-vue/" class="u-url">Vue 跑起来HelloWorld</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/hello-vue/" rel="bookmark"><time class="published dt-published" datetime="2018-03-22T00:00:00+08:00" title="2018-03-22 00:00">2018-03-22 00:00</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>
+我们的目的是让浏览器显示一个Hello Vue。
+</p>
+
+<ul class="org-ul">
+<li>最开始，我们当然是新建一个目录，然后初始化npm</li>
+</ul>
+<div class="highlight"><pre><span></span>mkdir hello-vue
+cd hello-vue
+npm init
+</pre></div>
+<p>
+<code>npm init</code> 会询问你的项目初始化的信息，一直默认就行
+</p>
+
+<ul class="org-ul">
+<li>然后，我们现在的web项目都离不开webpack这一款打包工具。我们安装它</li>
+</ul>
+<div class="highlight"><pre><span></span>npm i webpack
+</pre></div>
+<p>
+i 是install的缩写
+</p>
+
+<ul class="org-ul">
+<li>我们需要一个server来让浏览器请求，所以我们导入webpack-serve</li>
+</ul>
+<div class="highlight"><pre><span></span>npm i webpack-serve -D
+</pre></div>
+<p>
+-D 选项是–save-dev的缩写
+</p>
+
+<ul class="org-ul">
+<li>我们在 <code>package.json</code> 中增加一个dev的script。来启动webpack-server</li>
+
+<li>当然我们创建一个 <code>index.js</code> 来作为webpack打包的入口</li>
+
+<li>我们引入 <code>html-webpack-plugin</code> 工具，这个工具就简单的创建index.html，index.html中会引入我们的index.js。配置我们的 <code>webpack.config.js</code> 来使用我们的工具</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">)</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">mode</span><span class="o">:</span> <span class="s1">'development'</span><span class="p">,</span>
+    <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+	<span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">()</span>
+    <span class="p">]</span>
+<span class="p">};</span>
+</pre></div>
+<p>
+至此，我们的应用应该已经可以访问了，只是暂时还没有内容
+</p>
+
+<ul class="org-ul">
+<li>我们在index.js中将vue内容加载进来，这里假设vue文件为app.vue，当然我们也要设置一下webpack使其能处理vue文件</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+	<span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+	    <span class="p">{</span>
+		<span class="nx">test</span><span class="o">:</span> <span class="sr">/\.vue$/</span><span class="p">,</span>
+		<span class="nx">loader</span><span class="o">:</span> <span class="s1">'vue-loader'</span>
+	    <span class="p">},</span>
+	<span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+<ul class="org-ul">
+<li>在index.js中把app.vue加载进来，注意这里因为预处理中并不能处理template(vue html内容)的方式，只能使用render方式。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">'./app.vue'</span>
+<span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">'vue'</span>
+
+<span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">id</span><span class="o">=</span><span class="s2">"app"</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="nx">render</span><span class="o">:</span> <span class="p">(</span><span class="nx">h</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">h</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="s2">"#app"</span><span class="p">)</span>
+</pre></div>
+
+<p>
+render方法中的参数h的类型是一个function。接受的参数是一个Vue对象或者一个string。如果是一个string的话，会找这个string对应的Vue。
+所以我们也可以用另外一个方式。
+</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">'./app.vue'</span>
+<span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">'vue'</span>
+
+<span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">id</span><span class="o">=</span><span class="s2">"app"</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="nx">render</span><span class="o">:</span> <span class="p">(</span><span class="nx">h</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">h</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="s2">"#app"</span><span class="p">)</span>
+</pre></div>
+
+
+<p>
+这里的$mount方法和el一样，都是将控件替换为vue对象生成的控件
+</p>
+
+<p>
+到这里我们的工作就完成了
+</p>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/emacs_headline_auto_indent/" class="u-url">Emacs让标题自动提前</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/emacs_headline_auto_indent/" rel="bookmark"><time class="published dt-published" datetime="2018-03-19T13:31:39+08:00" title="2018-03-19 13:31">2018-03-19 13:31</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>
+我使用的是 <code>org mode + eval</code> 。
+</p>
+
+
+<p>
+总有个比较烦的事情。比如
+</p>
+<ol class="org-ol">
+<li>Input * First Node to input a outline</li>
+<li>Escape to normal noe</li>
+<li>Use o to start a new line, emacs will auto indent in this new line</li>
+<li>Input * Second Node to input a new outline</li>
+</ol>
+<p>
+这个时候我想要的效果是我再加一个空格的时候，*好应该可以自动跑到行首，因为90%的情况都是想新起一样的
+</p>
+
+<p>
+好的，以此为目的，我们来修改我们的emacs吧
+</p>
+
+<div id="outline-container-org4a19daa" class="outline-2">
+<h2 id="org4a19daa">思路</h2>
+<div class="outline-text-2" id="text-org4a19daa">
+<p>
+我们可以按照这个步骤实现我们的需求
+</p>
+<ul class="org-ul">
+<li>给org-mode增加hook（为了简单起见，不理evil）。每次buffer改变的时候，判断是否需要处理</li>
+<li>如果需要处理，删除行首到本行第一个不为的字符</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge6ad8df" class="outline-2">
+<h2 id="orge6ad8df">实现</h2>
+<div class="outline-text-2" id="text-orge6ad8df">
+<p>
+我们安装前面的思路来实现这个功能
+</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defun</span> <span class="nv">th_headline-auto-indent</span><span class="p">(</span><span class="nf">start</span> <span class="nv">end</span> <span class="nv">len</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="k">and </span><span class="p">(</span><span class="nf">eq</span> <span class="nv">len</span> <span class="mi">0</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">th_should-handle-headline</span><span class="p">))</span>
+      <span class="p">(</span><span class="nf">save-excursion</span> <span class="p">(</span><span class="nf">th_del-space-to-asterisk</span><span class="p">))</span>
+    <span class="p">(</span><span class="nf">message</span> <span class="s">"not headline"</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nf">defun</span> <span class="nv">th_should-handle-headline</span><span class="p">()</span>
+  <span class="s">"是否应该处理headline的缩进, 当*(一个多多个)不在行首的时候，应该处理."</span>
+  <span class="p">(</span><span class="nf">and</span>
+   <span class="p">(</span><span class="nf">eq</span> <span class="p">(</span><span class="nf">char-syntax</span> <span class="p">(</span><span class="nf">preceding-char</span><span class="p">))</span> <span class="nv">?</span><span class="err">\</span> <span class="p">)</span>
+   <span class="p">(</span><span class="nf">looking-back</span> <span class="s">"^\\s +\\*\\s "</span> <span class="nv">nil</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nf">defun</span> <span class="nv">th_del-space-to-asterisk</span><span class="p">()</span>
+  <span class="s">"从行首开始，删除至第一个不为空格的元素."</span>
+  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">left</span> <span class="p">(</span><span class="nf">progn</span>
+		<span class="p">(</span><span class="nf">beginning-of-line</span><span class="p">)</span>
+		<span class="p">(</span><span class="nf">point</span><span class="p">)))</span>
+	<span class="p">(</span><span class="nf">right</span> <span class="p">(</span><span class="nf">progn</span>
+		 <span class="p">(</span><span class="nf">beginning-of-line</span><span class="p">)</span>
+		 <span class="p">(</span><span class="nf">skip-syntax-forward</span> <span class="s">" "</span><span class="p">)</span>
+		 <span class="p">(</span><span class="nf">point</span><span class="p">))))</span>
+    <span class="p">(</span><span class="nf">delete-region</span> <span class="nv">left</span> <span class="nv">right</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nf">defun</span> <span class="nv">th_add-headline-auto-indent-hook</span><span class="p">()</span>
+    <span class="p">(</span><span class="nf">add-hook</span> <span class="ss">'after-change-functions</span> <span class="ss">'th_headline-auto-indent</span> <span class="nv">t</span> <span class="nv">t</span><span class="p">))</span>
+
+    <span class="p">(</span><span class="nf">add-hook</span> <span class="ss">'org-mode-hook</span> <span class="ss">'th_add-headline-auto-indent-hook</span> <span class="nv">t</span><span class="p">)</span>
+</pre></div>
+
+<ul class="org-ul">
+<li>
+<code>save-excursion</code> 让鼠标复原</li>
+<li>
+<code>char-syntax</code> 将一个char的syntax code返回，返回值是一个char。而?\ 为空格char。elisp中char为一个整数值。</li>
+</ul>
+<p>
+?\ 为空格的char。类似的还有?a为a的char。
+</p>
+<ul class="org-ul">
+<li>
+<code>skip-syntax-forward</code> 按照给出的syntax class(此处为空白)往前进。跳过所有空白（空格，换行符等）</li>
+<li>
+<code>add-hook</code> 第4个参数为true的话，为往参数1本地hook（如果没有就创建）中添加hook</li>
+</ul>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/elf/" class="u-url">elf</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/elf/" rel="bookmark"><time class="published dt-published" datetime="2018-03-06T21:42:41+08:00" title="2018-03-06 21:42">2018-03-06 21:42</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-orgdaf82b6" class="outline-2">
+<h2 id="orgdaf82b6">CPU 类型</h2>
+<div class="outline-text-2" id="text-orgdaf82b6">
+<ul class="org-ul">
+<li>x86</li>
+</ul>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/libs/" class="u-url">libs</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/libs/" rel="bookmark"><time class="published dt-published" datetime="2018-01-31T16:34:15+08:00" title="2018-01-31 16:34">2018-01-31 16:34</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-orgec6d9d8" class="outline-2">
+<h2 id="orgec6d9d8">Android</h2>
+<div class="outline-text-2" id="text-orgec6d9d8">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-left">
+<col class="org-left">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">name</th>
+<th scope="col" class="org-left">desc</th>
+<th scope="col" class="org-left">author</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="https://github.com/amitshekhariitbhu/Android-Debug-Database">Android-Debug-Database</a></td>
+<td class="org-left">在线查看本项目的数据库</td>
+<td class="org-left">amitshekhariitbhu</td>
+</tr>
+<tr>
+<td class="org-left">mphttp</td>
+<td class="org-left">mp.weixin.qq.com 操作的工具库</td>
+<td class="org-left">york</td>
+</tr>
+<tr>
+<td class="org-left">wxxposed</td>
+<td class="org-left">微信xposed 操作工具库</td>
+<td class="org-left">york</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/android_lockscreen_crack/" class="u-url">安卓锁屏破解</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/android_lockscreen_crack/" rel="bookmark"><time class="published dt-published" datetime="2018-01-29T18:18:40+08:00" title="2018-01-29 18:18">2018-01-29 18:18</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-org43807f1" class="outline-2">
+<h2 id="org43807f1">手势</h2>
+<div class="outline-text-2" id="text-org43807f1">
+</div>
+<div id="outline-container-org71916a1" class="outline-3">
+<h3 id="org71916a1">步骤</h3>
+<div class="outline-text-3" id="text-org71916a1">
+<ol class="org-ol">
+<li>获取锁屏界面确定按钮id <code>footerRightButton</code>
+</li>
+<li>找到类 <code>ChooseLockPattern</code> 中的点击处理函数 <code>saveChoosePatternAndFinish</code>
+</li>
+</ol>
+<p>
+将Pattern转换为string的函数
+</p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">patternToString</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">LockPatternView</span><span class="o">.</span><span class="na">Cell</span><span class="o">&gt;</span> <span class="n">pattern</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">pattern</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="s">""</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">patternSize</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">patternSize</span><span class="o">];</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">patternSize</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	<span class="n">LockPatternView</span><span class="o">.</span><span class="na">Cell</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+	<span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">(</span><span class="n">cell</span><span class="o">.</span><span class="na">getRow</span><span class="o">()</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">cell</span><span class="o">.</span><span class="na">getColumn</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+<ol class="org-ol">
+<li>经过一些列的中间函数，调用 <code>LockSettingService</code> 的 <code>writeFile(getLockPatternFilename(userId), hash);</code> 这里hash为先将string转换回pattern。然后用pattern算出一个hash值</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">patternToHash</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">LockPatternView</span><span class="o">.</span><span class="na">Cell</span><span class="o">&gt;</span> <span class="n">pattern</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">pattern</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">patternSize</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">patternSize</span><span class="o">];</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">patternSize</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	<span class="n">LockPatternView</span><span class="o">.</span><span class="na">Cell</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+	<span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">(</span><span class="n">cell</span><span class="o">.</span><span class="na">getRow</span><span class="o">()</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">cell</span><span class="o">.</span><span class="na">getColumn</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="k">try</span> <span class="o">{</span>
+	<span class="n">MessageDigest</span> <span class="n">md</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"SHA-1"</span><span class="o">);</span>
+	<span class="kt">byte</span><span class="o">[]</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+	<span class="k">return</span> <span class="n">hash</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">nsa</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<ol class="org-ol">
+<li>fileName为 <code>/data/system/gesture.key</code>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org2d62318" class="outline-3">
+<h3 id="org2d62318">验证</h3>
+<div class="outline-text-3" id="text-org2d62318">
+<p>
+使用以下代码来算一个7的手势的hash值
+</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.security.MessageDigest</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span>
+
+
+<span class="n">fun</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="o">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">"hello world!"</span><span class="o">)</span>
+    <span class="n">val</span> <span class="n">gesture</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Cell</span><span class="o">&gt;()</span>
+    <span class="n">gesture</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">Cell</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">))</span>
+    <span class="n">gesture</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">Cell</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
+    <span class="n">gesture</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">Cell</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
+    <span class="n">gesture</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">Cell</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
+
+    <span class="n">val</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">patternToHash</span><span class="o">(</span><span class="n">gesture</span><span class="o">)</span>
+    <span class="n">printByte</span><span class="o">(</span><span class="n">hash</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="n">data</span> <span class="kd">class</span> <span class="nf">Cell</span><span class="o">(</span><span class="n">val</span> <span class="n">row</span><span class="o">:</span> <span class="n">Int</span><span class="o">,</span> <span class="n">val</span> <span class="n">col</span><span class="o">:</span> <span class="n">Int</span><span class="o">)</span>
+
+<span class="n">fun</span> <span class="nf">patternToHash</span><span class="o">(</span><span class="n">pattern</span><span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Cell</span><span class="o">&gt;):</span> <span class="n">ByteArray</span><span class="o">{</span>
+    <span class="n">val</span> <span class="n">patternSize</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">size</span>
+    <span class="n">val</span> <span class="n">res</span> <span class="o">=</span> <span class="n">ByteArray</span><span class="o">(</span><span class="n">patternSize</span><span class="o">)</span>
+
+    <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="mi">1</span> <span class="n">until</span> <span class="n">patternSize</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">val</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+	<span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="n">cell</span><span class="o">.</span><span class="na">row</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">cell</span><span class="o">.</span><span class="na">col</span><span class="o">).</span><span class="na">toByte</span><span class="o">()</span>
+    <span class="o">}</span>
+
+    <span class="k">return</span> <span class="k">try</span> <span class="o">{</span>
+	<span class="n">val</span> <span class="n">md</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"SHA-1"</span><span class="o">)</span>
+	<span class="n">md</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">res</span><span class="o">)</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">nsa</span><span class="o">:</span> <span class="n">NoSuchAlgorithmException</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">res</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">fun</span> <span class="nf">printByte</span><span class="o">(</span><span class="n">byteArray</span><span class="o">:</span> <span class="n">ByteArray</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">byteArray</span>
+	    <span class="o">.</span><span class="na">map</span> <span class="o">{</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%02X"</span><span class="o">,</span> <span class="n">it</span><span class="o">)</span> <span class="o">}</span>
+	    <span class="o">.</span><span class="na">forEach</span> <span class="o">{</span> <span class="n">print</span><span class="o">(</span><span class="n">it</span><span class="o">)</span> <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<ol class="org-ol">
+<li>设置锁屏密码为7</li>
+<li>取出 /data/system/gesture.key 文件，查看文件内容，会发现和我们算出来的一样。</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org33673fc" class="outline-2">
+<h2 id="org33673fc">密码</h2>
+<div class="outline-text-2" id="text-org33673fc">
+</div>
+<div id="outline-container-org993da6d" class="outline-3">
+<h3 id="org993da6d">步骤</h3>
+<div class="outline-text-3" id="text-org993da6d">
+<ol class="org-ol">
+<li>和之前一样，不过这次调用的是 <code>LockSettingService</code> 的 <code>public void setLockPassword(String password, int userId)</code> 方法</li>
+<li>文件为 /data/system/password.key</li>
+<li>password转为hash的方法</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">passwordToHash</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">password</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">String</span> <span class="n">algo</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">hashed</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+	<span class="kt">byte</span><span class="o">[]</span> <span class="n">saltedPassword</span> <span class="o">=</span> <span class="o">(</span><span class="n">password</span> <span class="o">+</span> <span class="n">getSalt</span><span class="o">()).</span><span class="na">getBytes</span><span class="o">();</span>
+	<span class="kt">byte</span><span class="o">[]</span> <span class="n">sha1</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">algo</span> <span class="o">=</span> <span class="s">"SHA-1"</span><span class="o">).</span><span class="na">digest</span><span class="o">(</span><span class="n">saltedPassword</span><span class="o">);</span>
+	<span class="kt">byte</span><span class="o">[]</span> <span class="n">md5</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">algo</span> <span class="o">=</span> <span class="s">"MD5"</span><span class="o">).</span><span class="na">digest</span><span class="o">(</span><span class="n">saltedPassword</span><span class="o">);</span>
+	<span class="n">hashed</span> <span class="o">=</span> <span class="o">(</span><span class="n">toHex</span><span class="o">(</span><span class="n">sha1</span><span class="o">)</span> <span class="o">+</span> <span class="n">toHex</span><span class="o">(</span><span class="n">md5</span><span class="o">)).</span><span class="na">getBytes</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">Log</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"Failed to encode string because of missing algorithm: "</span> <span class="o">+</span> <span class="n">algo</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">hashed</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="n">String</span> <span class="nf">getSalt</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">long</span> <span class="n">salt</span> <span class="o">=</span> <span class="n">getLong</span><span class="o">(</span><span class="n">LOCK_PASSWORD_SALT_KEY</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">salt</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">try</span> <span class="o">{</span>
+	    <span class="n">salt</span> <span class="o">=</span> <span class="n">SecureRandom</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"SHA1PRNG"</span><span class="o">).</span><span class="na">nextLong</span><span class="o">();</span>
+	    <span class="n">setLong</span><span class="o">(</span><span class="n">LOCK_PASSWORD_SALT_KEY</span><span class="o">,</span> <span class="n">salt</span><span class="o">);</span>
+	    <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"Initialized lock password salt"</span><span class="o">);</span>
+	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+	    <span class="c1">// Throw an exception rather than storing a password we'll never be able to recover</span>
+	    <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="o">(</span><span class="s">"Couldn't get SecureRandom number"</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+	<span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">Long</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">salt</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+<ol class="org-ol">
+<li>这里的salt为一个随机数，存储在数据库 /data/system/locksettings.db 中。注意这里可能把db文件拿出来之后没有数据，需要把连带的wal, shm两个文件都拿出来才看得到数据</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgbbc0ef5" class="outline-3">
+<h3 id="orgbbc0ef5">验证</h3>
+<div class="outline-text-3" id="text-orgbbc0ef5">
+<p>
+同样的步骤，我们的测试密码为 aaa123
+</p>
+
+<p>
+测试代码
+</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.security.MessageDigest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Password</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">passwordToHash</span><span class="o">(</span><span class="s">"aaa123"</span><span class="o">)));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">passwordToHash</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">password</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+	    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="n">String</span> <span class="n">algo</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="kt">byte</span><span class="o">[]</span> <span class="n">hashed</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="k">try</span> <span class="o">{</span>
+	    <span class="kt">byte</span><span class="o">[]</span> <span class="n">saltedPassword</span> <span class="o">=</span> <span class="o">(</span><span class="n">password</span> <span class="o">+</span> <span class="n">getSalt</span><span class="o">()).</span><span class="na">getBytes</span><span class="o">();</span>
+	    <span class="kt">byte</span><span class="o">[]</span> <span class="n">sha1</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">algo</span> <span class="o">=</span> <span class="s">"SHA-1"</span><span class="o">).</span><span class="na">digest</span><span class="o">(</span><span class="n">saltedPassword</span><span class="o">);</span>
+	    <span class="kt">byte</span><span class="o">[]</span> <span class="n">md5</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">algo</span> <span class="o">=</span> <span class="s">"MD5"</span><span class="o">).</span><span class="na">digest</span><span class="o">(</span><span class="n">saltedPassword</span><span class="o">);</span>
+	    <span class="n">hashed</span> <span class="o">=</span> <span class="o">(</span><span class="n">toHex</span><span class="o">(</span><span class="n">sha1</span><span class="o">)</span> <span class="o">+</span> <span class="n">toHex</span><span class="o">(</span><span class="n">md5</span><span class="o">)).</span><span class="na">getBytes</span><span class="o">();</span>
+	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="n">hashed</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">toHex</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">ary</span><span class="o">)</span> <span class="o">{</span>
+	<span class="kd">final</span> <span class="n">String</span> <span class="n">hex</span> <span class="o">=</span> <span class="s">"0123456789ABCDEF"</span><span class="o">;</span>
+	<span class="n">String</span> <span class="n">ret</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ary</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	    <span class="n">ret</span> <span class="o">+=</span> <span class="n">hex</span><span class="o">.</span><span class="na">charAt</span><span class="o">((</span><span class="n">ary</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="o">);</span>
+	    <span class="n">ret</span> <span class="o">+=</span> <span class="n">hex</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">ary</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="nf">getSalt</span><span class="o">()</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="n">Long</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="mi">7775430539427247249L</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbbb7365" class="outline-2">
+<h2 id="orgbbb7365">软硬件环境</h2>
+<div class="outline-text-2" id="text-orgbbb7365">
+<ul class="org-ul">
+<li>Android version: 4.4.4</li>
+</ul>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/just_doing/" class="u-url">Just Do</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/just_doing/" rel="bookmark"><time class="published dt-published" datetime="2018-01-09T00:10:03+08:00" title="2018-01-09 00:10">2018-01-09 00:10</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-org59e84dc" class="outline-2">
+<h2 id="org59e84dc">Emacs在工程中grep</h2>
+<div class="outline-text-2" id="text-org59e84dc">
+<p>
+运行 <code>C-c p s g</code>
+</p>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/cookie/" class="u-url">cookie</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/cookie/" rel="bookmark"><time class="published dt-published" datetime="2017-12-27T20:09:07+08:00" title="2017-12-27 20:09">2017-12-27 20:09</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-org7c6b51a" class="outline-2">
+<h2 id="org7c6b51a">属性</h2>
+<div class="outline-text-2" id="text-org7c6b51a">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-left">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">属性</th>
+<th scope="col" class="org-left">说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left">name</td>
+<td class="org-left">cookie的名字</td>
+</tr>
+<tr>
+<td class="org-left">value</td>
+<td class="org-left">值，如果为EXPIRED，则将cookie置为失效</td>
+</tr>
+<tr>
+<td class="org-left">path</td>
+<td class="org-left">对应的path</td>
+</tr>
+<tr>
+<td class="org-left">Expires</td>
+<td class="org-left">失效时间。按一定格式。如Tue, 26-Dec-2017 12:08:25 GMT;</td>
+</tr>
+<tr>
+<td class="org-left">Secure</td>
+<td class="org-left">是否是保密</td>
+</tr>
+<tr>
+<td class="org-left">HttpOnly</td>
+<td class="org-left">是否是HttpOnly</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org1277134" class="outline-2">
+<h2 id="org1277134">Http set</h2>
+<div class="outline-text-2" id="text-org1277134">
+</div>
+<div id="outline-container-orgbdefbb9" class="outline-3">
+<h3 id="orgbdefbb9">设置一个有有效期的cookie</h3>
+<div class="outline-text-3" id="text-orgbdefbb9">
+<p>
+<code>Set-Cookie: safecode=EXPIRED; Path=/; Expires=Tue, 26-Dec-2017 12:08:25 GMT; Secure; HttpOnly</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orge87496c" class="outline-3">
+<h3 id="orge87496c">设置一个永久有效的cookie</h3>
+<div class="outline-text-3" id="text-orge87496c">
+<p>
+<code>Set-Cookie: ticket=3a9fe9f38e7c59f043508be2b878c5d28b430832; Path=/; Secure; HttpOnly</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgfb4313b" class="outline-3">
+<h3 id="orgfb4313b">将一个Cookie置为过期，注意时间是之前的时间</h3>
+<div class="outline-text-3" id="text-orgfb4313b">
+<p>
+<code>Set-Cookie: aster_ticket=EXPIRED; Path=/; Expires=Tue, 26-Dec-2017 12:08:25 GMT; Secure; HttpOnly</code>
+</p>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/learn_music/" class="u-url">Learn Music</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/learn_music/" rel="bookmark"><time class="published dt-published" datetime="2017-11-21T14:22:01+08:00" title="2017-11-21 14:22">2017-11-21 14:22</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-org2f3363c" class="outline-2">
+<h2 id="org2f3363c">音组</h2>
+<div class="outline-text-2" id="text-org2f3363c">
+
+<div class="figure">
+<p><img src="http://img.yinyuezj.com/uploads/allimg/150210/212923AZ-3.gif" alt="212923AZ-3.gif"></p>
+</div>
+</div>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="next">
+                <a href="index-1.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:n.tesla@example.com">Nikola Tesla</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

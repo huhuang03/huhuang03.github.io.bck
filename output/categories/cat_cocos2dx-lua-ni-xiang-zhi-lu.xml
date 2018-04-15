@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Nikola Site (Posts about Cocos2dx-lua 逆向之路)</title><link>https://example.com/</link><description></description><atom:link href="https://example.com/categories/cat_cocos2dx-lua-ni-xiang-zhi-lu.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:n.tesla@example.com"&gt;Nikola Tesla&lt;/a&gt; </copyright><lastBuildDate>Sun, 15 Apr 2018 03:07:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>华为手机刷官方Rom</title><link>https://example.com/posts/huawei_android_rom/</link><dc:creator>Nikola Tesla</dc:creator><description>&lt;p&gt;
+手上一台华为的机子，想Root。但是kingRoot无法成功，只能先尝试刷官方Room。然后重新kingroot了。
+&lt;/p&gt;
+
+&lt;p&gt;
+操作系统为Mac。
+&lt;/p&gt;
+
+&lt;p&gt;
+首先&lt;a href="https://developers.google.com/android/images#mysidspr"&gt;下载一个rom&lt;/a&gt;吧。我也不知道应该哪个，就随便下个4.3版本的系统试试吧。选择 &lt;code&gt;4.3 (JLS36C)&lt;/code&gt; 。
+用迅雷下载确实可以大大提高下载速度，我有8M/s
+&lt;/p&gt;
+
+&lt;p&gt;
+华为比较坑的是，解锁fastboot需要14天登录华为账号，我们只有14天之后再来看了！2018年04月01日。
+&lt;/p&gt;
+
+&lt;p&gt;
+顺便加上一些命令
+&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# 重进进入fastboot模式
+adb reboot bootloader
+# 查询bootloader状态（是否锁住）
+fasboot oem get-bootinfo
+&lt;/pre&gt;&lt;/div&gt;</description><guid>https://example.com/posts/huawei_android_rom/</guid><pubDate>Sat, 31 Mar 2018 16:00:00 GMT</pubDate></item></channel></rss>

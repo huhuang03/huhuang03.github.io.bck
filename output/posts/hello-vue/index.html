@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vue 跑起来HelloWorld | My Nikola Site</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://example.com/posts/hello-vue/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Nikola Tesla">
+<link rel="prev" href="../emacs_headline_auto_indent/" title="Emacs让标题自动提前" type="text/html">
+<link rel="next" href="../huawei_android_rom/" title="华为手机刷官方Rom" type="text/html">
+<meta property="og:site_name" content="My Nikola Site">
+<meta property="og:title" content="Vue 跑起来HelloWorld">
+<meta property="og:url" content="https://example.com/posts/hello-vue/">
+<meta property="og:description" content="我们的目的是让浏览器显示一个Hello Vue。
+
+
+
+最开始，我们当然是新建一个目录，然后初始化npm
+
+mkdir hello-vue
+cd hello-vue
+npm init
+
+
+npm init 会询问你的项目初始化的信息，一直默认就行
+
+
+
+然后，我们现在的web项目都离不开webpack这一款打包工具。我们安装它
+
+npm i webpack
+
+
+i 是install的缩写
+
+
+
+我">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-03-22T00:00:00+08:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://example.com/">
+
+                <span id="blog-title">My Nikola Site</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.org" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Vue 跑起来HelloWorld</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    <a href="../../authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-03-22T00:00:00+08:00" itemprop="datePublished" title="2018-03-22 00:00">2018-03-22 00:00</time></a></p>
+            
+        <p class="sourceline"><a href="index.org" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>
+我们的目的是让浏览器显示一个Hello Vue。
+</p>
+
+<ul class="org-ul">
+<li>最开始，我们当然是新建一个目录，然后初始化npm</li>
+</ul>
+<div class="highlight"><pre><span></span>mkdir hello-vue
+cd hello-vue
+npm init
+</pre></div>
+<p>
+<code>npm init</code> 会询问你的项目初始化的信息，一直默认就行
+</p>
+
+<ul class="org-ul">
+<li>然后，我们现在的web项目都离不开webpack这一款打包工具。我们安装它</li>
+</ul>
+<div class="highlight"><pre><span></span>npm i webpack
+</pre></div>
+<p>
+i 是install的缩写
+</p>
+
+<ul class="org-ul">
+<li>我们需要一个server来让浏览器请求，所以我们导入webpack-serve</li>
+</ul>
+<div class="highlight"><pre><span></span>npm i webpack-serve -D
+</pre></div>
+<p>
+-D 选项是–save-dev的缩写
+</p>
+
+<ul class="org-ul">
+<li>我们在 <code>package.json</code> 中增加一个dev的script。来启动webpack-server</li>
+
+<li>当然我们创建一个 <code>index.js</code> 来作为webpack打包的入口</li>
+
+<li>我们引入 <code>html-webpack-plugin</code> 工具，这个工具就简单的创建index.html，index.html中会引入我们的index.js。配置我们的 <code>webpack.config.js</code> 来使用我们的工具</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">)</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">mode</span><span class="o">:</span> <span class="s1">'development'</span><span class="p">,</span>
+    <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+	<span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">()</span>
+    <span class="p">]</span>
+<span class="p">};</span>
+</pre></div>
+<p>
+至此，我们的应用应该已经可以访问了，只是暂时还没有内容
+</p>
+
+<ul class="org-ul">
+<li>我们在index.js中将vue内容加载进来，这里假设vue文件为app.vue，当然我们也要设置一下webpack使其能处理vue文件</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+	<span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+	    <span class="p">{</span>
+		<span class="nx">test</span><span class="o">:</span> <span class="sr">/\.vue$/</span><span class="p">,</span>
+		<span class="nx">loader</span><span class="o">:</span> <span class="s1">'vue-loader'</span>
+	    <span class="p">},</span>
+	<span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+<ul class="org-ul">
+<li>在index.js中把app.vue加载进来，注意这里因为预处理中并不能处理template(vue html内容)的方式，只能使用render方式。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">'./app.vue'</span>
+<span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">'vue'</span>
+
+<span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">id</span><span class="o">=</span><span class="s2">"app"</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="nx">render</span><span class="o">:</span> <span class="p">(</span><span class="nx">h</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">h</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="s2">"#app"</span><span class="p">)</span>
+</pre></div>
+
+<p>
+render方法中的参数h的类型是一个function。接受的参数是一个Vue对象或者一个string。如果是一个string的话，会找这个string对应的Vue。
+所以我们也可以用另外一个方式。
+</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">'./app.vue'</span>
+<span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">'vue'</span>
+
+<span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">id</span><span class="o">=</span><span class="s2">"app"</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="nx">render</span><span class="o">:</span> <span class="p">(</span><span class="nx">h</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">h</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="s2">"#app"</span><span class="p">)</span>
+</pre></div>
+
+
+<p>
+这里的$mount方法和el一样，都是将控件替换为vue对象生成的控件
+</p>
+
+<p>
+到这里我们的工作就完成了
+</p>
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../emacs_headline_auto_indent/" rel="prev" title="Emacs让标题自动提前">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../huawei_android_rom/" rel="next" title="华为手机刷官方Rom">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:n.tesla@example.com">Nikola Tesla</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

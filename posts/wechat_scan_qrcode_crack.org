@@ -1,0 +1,1008 @@
+#+BEGIN_COMMENT
+.. title: Wechat scan qrcode crack
+.. slug: wechat_scan_qrcode_crack
+.. date: 2017-09-19 18:14:58 UTC+08:00
+.. tags: wechat crack
+.. category:  crack
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+#+OPTIONS: ^:nil
+
+** Flow
+- Scan a qrcode, get the url
+- Get pass_ticket by send =GetA8Key= request
+- Append pass_ticket to url and then open =WebViewUI Actiivty=
+- Send =GetA8Key= again to get other info, include =http_headers=
+- Call =WebView.open(url, http_headers)=
+- If we use httpRequest to call(url, http_headers), It will be detection by wechat. Why?
+  
+** A8key flow
+What is th a8key flow
+
+The orignal flow is:
+- After BaseSearchUI get qrcoce url, call =QBarStringHandler.deal()=
+- =deal= method =send GetA8Key= request, use =NetSceneQueue.enqueue()= method.
+- And =QrBarStringHandle= call =NetScenequeue.addCallback= method to add self to callbacks.
+- get pass_ticet from =GetA8key.Ja= which is the full url
+- get request_header use previous flow again
+- get the new full url to and the request_header
+  
+** Project
+Use com.th.xposed:wx_xpsoed lib.
+** some useful note
+*** mp.weixin.qq common scan, capture
+#+BEGIN_SRC html
+GET /wap/loginauthqrcode?action=scan&qrticket=a0313df4e8d201402fd9818178b094d0&pass_ticket=KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt%2B3XJSIFHRh1S37sn&wx_header=1 HTTP/1.1
+host : mp.weixin.qq.com
+connection : keep-alive
+accept : text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+upgrade-insecure-requests : 1
+user-agent : Mozilla/5.0 (Linux; Android 6.0.1; ZUK Z2131 Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/48.0.2564.106 Mobile Safari/537.36 MicroMessenger/6.5.4.1000 NetType/WIFI Language/zh_CN
+x-wechat-uin : NTY4Mzk1MzA4
+x-wechat-key : eaa6a79f5ebe58c1090f98afa36c0900cb903ffb9115e358335bbce5df47e3938561df85ae89bdba853682912f2e9ccd1efe7fbc3b42415f0658ac058a8f4f13c26e6c6e693c242469543ec2f6558114
+accept-language : zh-CN,en-US;q=0.8
+cookie : pgv_info=ssid=s4670494987; pgv_pvid=6500664195; wxtokenkey=a9a9b2f1717d87d2acbc537cef71f1b32d434463d55d701c640695781d5acfc2; wxuin=568395308; pass_ticket=KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn; wap_sid2=CKyMhI8CEkhNMVpfWU9NOENWMnA1U053SHAxRmFBTTlFR0NlcHNsMWZidm80Q2s4LWZtdUYxME9jSWhuajZ0M1ZiSnl5LTZobXdNQUFBfn4w4smZzgU4DEAF
+x-requested-with : com.tencent.mm
+content-length : 0
+request body
+
+response header
+
+HTTP/1.1 200
+content-type : text/html; charset=UTF-8
+cache-control : no-cache, must-revalidate
+strict-transport-security : max-age=15552000
+set-cookie : wxuin=568395308; Path=/; HttpOnlypass_ticket=KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn; Path=/; HttpOnlywap_sid2=CKyMhI8CEkh4Z1VndjJWVnE3VTgtVmV0WHhwYTQ3NUFjZU5JQnZJQjdrbmZCQXM3S2ZUREd4UnRjc01Gc09jS01MYXVQV3MtbXdNQUFBfn4w8NKZzgU4DEAF; Path=/; HttpOnly
+connection : keep-alive
+
+
+<!DOCTYPE html>
+<!--headTrap<body></body><head></head><html></html>--><html>
+    <head>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+        <title>公众平台安全保护</title>
+        
+
+<link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css"/>
+<link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/safe/w_safe3301b4.css"/>
+
+    </head>
+    <body class="zh_CN " ontouchstart="">
+        
+  
+	  
+		 
+			  
+				<div class="page_msg_t js_msg">
+				    <i class="icon_msg waiting"></i>
+				    <div class="text_area_t">
+						<div class="text">
+							<h1 class="title">你确认要发送登录申请到公众平台<br/>管理员微信ma9**0_cm吗?</h1>
+						</div>
+				    </div>
+				    <div class="opr_area">
+				        <p class="btn_area">
+				            <a href="javascript:" class="btn btn_primary" id="js_allow">确定</a>
+							<a href="javascript:" class="btn btn_default" id="js_cancel">取消</a>
+				        </p>
+				    </div>
+				</div>
+		
+	<div id="js_cancel_box" class="page_msg_t js_msg" style="display: none;">
+	<i class="icon_msg warn"></i>
+	<div class="text_area_t">
+		<div class="text">
+			<h1 class="title">已取消育儿亲子手册<br>本次登录操作</h1>
+		</div>
+	</div>
+</div>
+<div id="js_apply_box" class="page_msg_t js_msg" style="display: none;">
+	<i class="icon_msg success"></i>
+	<div class="text_area_t">
+		<div class="text">
+			<h1 class="title">已发送育儿亲子手册<br>登录申请</h1>
+		</div>
+	</div>
+</div>
+<div id="js_success_box" class="weui-msg js_msg" style="display: none;">
+    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+	<div class="weui-msg__text-area">
+        <h1 class="weui-msg__title">已确认登录公众号</h1>
+	</div>
+</div>
+
+        <script nonce="">
+    var __DEBUGINFO = {
+        debug_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/debug/console34c264.js",
+        safe_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/safe/moonsafe34c264.js",
+        res_list: []
+    };
+</script>
+
+<script nonce="">
+(function() {
+	function _addVConsole(uri) {
+		var url = '//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/' + uri;
+		document.write('<script nonce="" type="text/javascript" src="' + url + '"><\/script>');
+	}
+	if (
+		(document.cookie && document.cookie.indexOf('vconsole_open=1') > -1)
+		|| location.href.indexOf('vconsole=1') > -1
+	) {
+		_addVConsole('2.5.1/vconsole.min.js');
+		_addVConsole('plugin/vconsole-elements/1.0.2/vconsole-elements.min.js');
+		_addVConsole('plugin/vconsole-sources/1.0.1/vconsole-sources.min.js');
+		_addVConsole('plugin/vconsole-resources/1.0.0/vconsole-resources.min.js');
+		_addVConsole('plugin/vconsole-mpopt/1.0.0/vconsole-mpopt.js');
+	}
+})();
+</script>
+        <script>window.__moon_host = 'res.wx.qq.com';window.moon_map = {"biz_wap/jsapi/core.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/jsapi/core34c264.js","biz_wap/utils/mmversion.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/mmversion34c264.js","biz_wap/utils/log.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/log34c264.js","appmsg/log.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/log300330.js","safe/w_login.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/safe/w_login37cd31.js"};</script><script type="text/javascript">window.__wxgspeeds={}; window.__wxgspeeds.moonloadtime=+new Date()</script><script onerror="wx_loaderror(this)"  type="text/javascript" src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon368f86.js"></script>
+<script type="text/javascript">
+	console.log('已进入原有逻辑。');
+	var L = {};
+	L.ajax = function(obj){
+	    var type  = (obj.type || 'GET').toUpperCase();
+	    var url   = obj.url;
+	    var async = typeof obj.async == 'undefined' ? true : obj.async;
+	    var xhr   = new XMLHttpRequest();
+	    var timer = null;
+
+	    var data = null;
+	    if (typeof obj.data == "object"){
+	        var d = obj.data;
+	        data = [];
+	        for(var k in d) {
+	            if (d.hasOwnProperty(k)){
+	                data.push(k + "=" + encodeURIComponent(d[k]));
+	            }
+	        }
+	        data = data.join("&");
+	    }else{
+	        data = typeof obj.data  == 'string' ? obj.data : null;
+	    }
+	    if( typeof obj.timeout != 'undefined' ){
+	        timer = setTimeout(function(){
+	            xhr.abort("timeout");
+	            obj.complete && obj.complete();
+	            obj.complete = null;
+	        }, +obj.timeout);
+	    }
+
+	    xhr.open(type, url, async);
+	    xhr.onreadystatechange = function(){
+	        if( xhr.readyState == 3 ){
+	            obj.received && obj.received(xhr);
+	        }
+	        if( xhr.readyState == 4 ){
+	            if( xhr.status >= 200 && xhr.status < 400 ){
+	                obj.success && obj.success(xhr.responseText);
+	            } else {
+	                obj.error && obj.error(xhr);
+	            }
+	            timer && clearTimeout(timer);
+	            obj.complete && obj.complete(xhr);
+	            obj.complete = null;
+	        }
+	    };
+	    if( type == 'POST' ){
+	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+	    }
+	    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	    xhr.send(data);
+	};
+	L.parseJson = window.JSON ? JSON.parse : function(str){ return eval('(' + str + ')')};
+	L.id = function(_id){
+		var isid = (_id.indexOf("#") == 0),
+			ele = _id.substr(1, _id.length - 1);
+		return isid ? document.getElementById(ele) : document.getElementsByClassName(ele)[0];
+	};
+	L.on = function(el, type, cb, flag){
+		if(!el){return;}
+		var handler = function(e){
+			var ret = cb(e);
+			if(ret === false){
+				e.stopPropagation && (e.stopPropagation());
+				e.preventDefault && (e.preventDefault());
+			}
+		};
+		cb[type + "_handler"] = handler;
+		if(el.addEventListener){
+			el.addEventListener(type, handler, !!flag);
+			return;
+		}
+		if(el.attachEvent){
+			el.attachEvent("on" + type, handler,!!flag);
+			return;
+		}
+	};
+	L.show = function(ele){L.id(ele).style.display = "block"};
+	L.hide = function(ele){L.id(ele).style.display = "none"};
+
+	var _allowerror = "确认失败，请重试",
+		_cancelerror = "取消失败，请重试";
+
+	L.on(L.id("#js_allow"), 'click', function(e){
+		L.ajax({
+			'url': location.pathname + '?action=confirm',
+			'type': 'POST',
+			'async': false,
+			'timeout': 120000,
+			'data': {
+				param: 'qrticket',
+				qrticket: 'a0313df4e8d201402fd9818178b094d0',
+				uin: '777',
+				key: '777',
+				pass_ticket: 'KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn',
+				appmsg_token: '923_6O1pIQySvKOkJJgbn9ty3GVlBn2qMwX4CfNNHg~~',
+				f: 'json'
+			},
+			'success': function(ret){
+				if(!ret){
+					alert(_allowerror + '(err:1)');
+				}else{
+					console.log(ret);
+					ret = (typeof ret == 'string') ? JSON.parse(ret) : ret;
+					if(ret.base_resp && ret.base_resp.ret == 0){
+						L.hide('.js_msg');
+						if('1'==1){  
+							L.show('#js_apply_box');
+						}else{
+							L.show('#js_success_box');
+						}
+					}else if(ret.base_resp && ret.base_resp.ret == -3 || ret.ret == -3 || ret.BaseResp && ret.BaseResp.ret == -3) {
+						(new Image()).src = location.protocol + "//mp.weixin.qq.com/mp/jsmonitor?idkey=24729_97_1";
+						alert('操作失败，可尝试退出登录个人微信号（设置-退出登录）后，重新登录进行操作。'); 
+					}else{
+						alert(_allowerror + '(err:2,ret:'+ JSON.stringify(ret) +')');
+					}
+				}
+			},
+			'error': function(xhr){
+				alert(_allowerror + '(err:3)');
+			},
+			'complete': function(xhr){
+				if(!xhr){
+					alert(_allowerror + '(err:4)');
+				}
+			}
+		});
+	});
+
+	L.on(L.id("#js_cancel"), 'click', function(e){
+		L.ajax({
+			'url': location.pathname + '?action=reject',
+			'type': 'POST',
+			'async': false,
+			'timeout': 120000,
+			'data': {
+				param: 'qrticket',
+				qrticket: 'a0313df4e8d201402fd9818178b094d0',
+				uin: '777',
+				key: '777',
+				pass_ticket: 'KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn',
+				appmsg_token: '923_6O1pIQySvKOkJJgbn9ty3GVlBn2qMwX4CfNNHg~~',
+				f: 'json'
+			},
+			'success': function(ret){
+				if(!ret){
+					alert(_cancelerror + '(err:1)');
+				}else{
+					console.log(ret);
+					ret = (typeof ret == 'string') ? JSON.parse(ret) : ret;
+					if(ret.base_resp && ret.base_resp.ret == 0){
+						L.hide('.js_msg');
+						L.show('#js_cancel_box');
+					}else if(ret.base_resp && ret.base_resp.ret == -3 || ret.ret == -3 || ret.BaseResp && ret.BaseResp.ret == -3) {
+						(new Image()).src = location.protocol + "//mp.weixin.qq.com/mp/jsmonitor?idkey=24729_98_1";
+						alert('操作失败，可尝试退出登录个人微信号（设置-退出登录）后，重新登录进行操作。'); 
+					}else{
+						alert(_cancelerror + '(err:2,ret:'+ JSON.stringify(ret) +')');
+					}
+				}
+			},
+			'error': function(xhr){
+				alert(_cancelerror + '(err:3)');
+			},
+			'complete': function(xhr){
+				if(!xhr){
+					alert(_cancelerror + '(err:4)');
+				}
+			}
+		});
+	});
+
+	var login_time = '';
+	if(login_time){
+	    var js_time = document.querySelector("#js_time");
+	    var _tmp_Time = new Date(Number(login_time)*1000);
+	    js_time && (js_time.innerHTML = (String(_tmp_Time.getFullYear()) + '-' +  String(_tmp_Time.getMonth()+1) + '-' + String(_tmp_Time.getDate()) + ' ' + (String(_tmp_Time.getHours()).length== 1 ? '0' + String(_tmp_Time.getHours()) : String(_tmp_Time.getHours())) + ':' + (String(_tmp_Time.getMinutes()).length == 1 ? '0' + String(_tmp_Time.getMinutes()) : String(_tmp_Time.getMinutes()))));
+	}
+
+	console.log('status:0');
+	console.log('user_category:1');
+	console.log('auth_type:');
+	console.log('user_nickname:');
+	console.log('biz_nickname:育儿亲子手册');
+	console.log('admin_wx_username:ma9**0_cm');
+	console.log('open_app_type:16');
+	console.log('qrticket:a0313df4e8d201402fd9818178b094d0');
+	console.log('login_time:');
+	console.log('notifyticket:');
+	console.log('uin:777');
+	console.log('key:777');
+	console.log('pass_ticket:KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn');
+	
+</script>
+    </body>
+</html>
+<!--tailTrap<body></body><head></head><html></html>-->
+
+#+END_SRC
+*** mp.weixin.qq manager scan. page source
+#+BEGIN_SRC html
+<!DOCTYPE html>
+<!--headTrap<body></body><head></head><html></html>--><html>
+    <head>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+        <title>公众平台安全保护</title>
+        
+
+<link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css"/>
+<link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/safe/w_safe3301b4.css"/>
+
+    </head>
+    <body class="zh_CN " ontouchstart="">
+        
+  
+	 
+		 
+							<div class="weui-msg js_msg">
+                    <div class="weui-msg__icon-area"><i class="weui-icon-waiting weui-icon_msg"></i></div>
+				    <div class="weui-msg__text-area">
+                        <h2 class="weui-msg__title">你确认要登录公众号<br/>静默的声响吗?</h2>
+				    </div>
+				    <div class="weui-msg__opr-area">
+				        <p class="weui-btn-area">
+				            <a href="javascript:" class="weui-btn weui-btn_primary" id="js_allow">确定</a>
+							<a href="javascript:" class="weui-btn weui-btn_default" id="js_cancel">取消</a>
+				        </p>
+				    </div>
+				</div>
+						<div id="js_cancel_box" class="page_msg_t js_msg" style="display: none;">
+	<i class="icon_msg warn"></i>
+	<div class="text_area_t">
+		<div class="text">
+			<h1 class="title">已取消静默的声响<br>本次登录操作</h1>
+		</div>
+	</div>
+</div>
+<div id="js_apply_box" class="page_msg_t js_msg" style="display: none;">
+	<i class="icon_msg success"></i>
+	<div class="text_area_t">
+		<div class="text">
+			<h1 class="title">已发送静默的声响<br>登录申请</h1>
+		</div>
+	</div>
+</div>
+<div id="js_success_box" class="weui-msg js_msg" style="display: none;">
+    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+	<div class="weui-msg__text-area">
+        <h1 class="weui-msg__title">已确认登录公众号</h1>
+	</div>
+</div>
+
+        <script nonce="">
+    var __DEBUGINFO = {
+        debug_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/debug/console34c264.js",
+        safe_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/safe/moonsafe34c264.js",
+        res_list: []
+    };
+</script>
+
+<script nonce="" type="text/javascript">
+(function() {
+	var totalCount = 0,
+			finishCount = 0;
+
+	function _loadVConsolePlugin() {
+		window.vConsole = new window.VConsole();
+		while (window.vConsolePlugins.length > 0) {
+			var p = window.vConsolePlugins.shift();
+			window.vConsole.addPlugin(p);
+		}
+	}
+	
+	function _addVConsole(uri, cb) {
+		totalCount++;
+		var url = '//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/' + uri;
+		var node = document.createElement('SCRIPT');
+		node.type = 'text/javascript';
+		node.src = url;
+		node.setAttribute('nonce', '');
+		if (cb) {
+			node.onload = cb;
+		}
+		document.getElementsByTagName('head')[0].appendChild(node);
+	}
+	if (
+		(document.cookie && document.cookie.indexOf('vconsole_open=1') > -1)
+		|| location.href.indexOf('vconsole=1') > -1
+	) {
+		window.vConsolePlugins = [];
+		_addVConsole('3.0.0/vconsole.min.js', function() {
+			
+			_addVConsole('plugin/vconsole-mpopt/1.0.1/vconsole-mpopt.js', _loadVConsolePlugin);
+		});
+	}
+})();
+</script>
+        <script>window.__moon_host = 'res.wx.qq.com';window.moon_map = {"biz_wap/jsapi/core.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/jsapi/core34c264.js","biz_wap/utils/mmversion.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/mmversion34c264.js","biz_wap/utils/log.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/log34c264.js","appmsg/log.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/log300330.js","safe/w_login.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/safe/w_login37cd31.js"};</script><script type="text/javascript">window.__wxgspeeds={}; window.__wxgspeeds.moonloadtime=+new Date()</script><script onerror="wx_loaderror(this)"  type="text/javascript" src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon368f86.js"></script>
+<script type="text/javascript">
+	console.log('已进入原有逻辑。');
+	var L = {};
+	L.ajax = function(obj){
+	    var type  = (obj.type || 'GET').toUpperCase();
+	    var url   = obj.url;
+	    var async = typeof obj.async == 'undefined' ? true : obj.async;
+	    var xhr   = new XMLHttpRequest();
+	    var timer = null;
+
+	    var data = null;
+	    if (typeof obj.data == "object"){
+	        var d = obj.data;
+	        data = [];
+	        for(var k in d) {
+	            if (d.hasOwnProperty(k)){
+	                data.push(k + "=" + encodeURIComponent(d[k]));
+	            }
+	        }
+	        data = data.join("&");
+	    }else{
+	        data = typeof obj.data  == 'string' ? obj.data : null;
+	    }
+	    if( typeof obj.timeout != 'undefined' ){
+	        timer = setTimeout(function(){
+	            xhr.abort("timeout");
+	            obj.complete && obj.complete();
+	            obj.complete = null;
+	        }, +obj.timeout);
+	    }
+
+	    xhr.open(type, url, async);
+	    xhr.onreadystatechange = function(){
+	        if( xhr.readyState == 3 ){
+	            obj.received && obj.received(xhr);
+	        }
+	        if( xhr.readyState == 4 ){
+	            if( xhr.status >= 200 && xhr.status < 400 ){
+	                obj.success && obj.success(xhr.responseText);
+	            } else {
+	                obj.error && obj.error(xhr);
+	            }
+	            timer && clearTimeout(timer);
+	            obj.complete && obj.complete(xhr);
+	            obj.complete = null;
+	        }
+	    };
+	    if( type == 'POST' ){
+	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+	    }
+	    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	    xhr.send(data);
+	};
+	L.parseJson = window.JSON ? JSON.parse : function(str){ return eval('(' + str + ')')};
+	L.id = function(_id){
+		var isid = (_id.indexOf("#") == 0),
+			ele = _id.substr(1, _id.length - 1);
+		return isid ? document.getElementById(ele) : document.getElementsByClassName(ele)[0];
+	};
+	L.on = function(el, type, cb, flag){
+		if(!el){return;}
+		var handler = function(e){
+			var ret = cb(e);
+			if(ret === false){
+				e.stopPropagation && (e.stopPropagation());
+				e.preventDefault && (e.preventDefault());
+			}
+		};
+		cb[type + "_handler"] = handler;
+		if(el.addEventListener){
+			el.addEventListener(type, handler, !!flag);
+			return;
+		}
+		if(el.attachEvent){
+			el.attachEvent("on" + type, handler,!!flag);
+			return;
+		}
+	};
+	L.show = function(ele){L.id(ele).style.display = "block"};
+	L.hide = function(ele){L.id(ele).style.display = "none"};
+
+	var _allowerror = "确认失败，请重试",
+		_cancelerror = "取消失败，请重试";
+
+	L.on(L.id("#js_allow"), 'click', function(e){
+		L.ajax({
+			'url': location.pathname + '?action=confirm',
+			'type': 'POST',
+			'async': false,
+			'timeout': 120000,
+			'data': {
+				param: 'qrticket',
+				qrticket: '8a153da79246c02de009aa16852744d0',
+				uin: '777',
+				key: '777',
+				pass_ticket: 'WLRWQ7mbu8L1DutDHxtKdNnOPlZUr6Df+ug64dUPIK0/RP97iPy6KEmNqnLpq4P4',
+				appmsg_token: '924_V2l5Wbe%2BYGLrSXd%2BavAFewnwMgx-DGTe21hDZA~~',
+				f: 'json'
+			},
+			'success': function(ret){
+				if(!ret){
+					alert(_allowerror + '(err:1)');
+				}else{
+					console.log(ret);
+					ret = (typeof ret == 'string') ? JSON.parse(ret) : ret;
+					if(ret.base_resp && ret.base_resp.ret == 0){
+						L.hide('.js_msg');
+						if('2'==1){  
+							L.show('#js_apply_box');
+						}else{
+							L.show('#js_success_box');
+						}
+					}else if(ret.base_resp && ret.base_resp.ret == -3 || ret.ret == -3 || ret.BaseResp && ret.BaseResp.ret == -3) {
+						(new Image()).src = location.protocol + "//mp.weixin.qq.com/mp/jsmonitor?idkey=24729_97_1";
+						alert('操作失败，可尝试退出登录个人微信号（设置-退出登录）后，重新登录进行操作。'); 
+					}else{
+						alert(_allowerror + '(err:2,ret:'+ JSON.stringify(ret) +')');
+					}
+				}
+			},
+			'error': function(xhr){
+				alert(_allowerror + '(err:3)');
+			},
+			'complete': function(xhr){
+				if(!xhr){
+					alert(_allowerror + '(err:4)');
+				}
+			}
+		});
+	});
+
+	L.on(L.id("#js_cancel"), 'click', function(e){
+		L.ajax({
+			'url': location.pathname + '?action=reject',
+			'type': 'POST',
+			'async': false,
+			'timeout': 120000,
+			'data': {
+				param: 'qrticket',
+				qrticket: '8a153da79246c02de009aa16852744d0',
+				uin: '777',
+				key: '777',
+				pass_ticket: 'WLRWQ7mbu8L1DutDHxtKdNnOPlZUr6Df+ug64dUPIK0/RP97iPy6KEmNqnLpq4P4',
+				appmsg_token: '924_V2l5Wbe%2BYGLrSXd%2BavAFewnwMgx-DGTe21hDZA~~',
+				f: 'json'
+			},
+			'success': function(ret){
+				if(!ret){
+					alert(_cancelerror + '(err:1)');
+				}else{
+					console.log(ret);
+					ret = (typeof ret == 'string') ? JSON.parse(ret) : ret;
+					if(ret.base_resp && ret.base_resp.ret == 0){
+						L.hide('.js_msg');
+						L.show('#js_cancel_box');
+					}else if(ret.base_resp && ret.base_resp.ret == -3 || ret.ret == -3 || ret.BaseResp && ret.BaseResp.ret == -3) {
+						(new Image()).src = location.protocol + "//mp.weixin.qq.com/mp/jsmonitor?idkey=24729_98_1";
+						alert('操作失败，可尝试退出登录个人微信号（设置-退出登录）后，重新登录进行操作。'); 
+					}else{
+						alert(_cancelerror + '(err:2,ret:'+ JSON.stringify(ret) +')');
+					}
+				}
+			},
+			'error': function(xhr){
+				alert(_cancelerror + '(err:3)');
+			},
+			'complete': function(xhr){
+				if(!xhr){
+					alert(_cancelerror + '(err:4)');
+				}
+			}
+		});
+	});
+
+	var login_time = '';
+	if(login_time){
+	    var js_time = document.querySelector("#js_time");
+	    var _tmp_Time = new Date(Number(login_time)*1000);
+	    js_time && (js_time.innerHTML = (String(_tmp_Time.getFullYear()) + '-' +  String(_tmp_Time.getMonth()+1) + '-' + String(_tmp_Time.getDate()) + ' ' + (String(_tmp_Time.getHours()).length== 1 ? '0' + String(_tmp_Time.getHours()) : String(_tmp_Time.getHours())) + ':' + (String(_tmp_Time.getMinutes()).length == 1 ? '0' + String(_tmp_Time.getMinutes()) : String(_tmp_Time.getMinutes()))));
+	}
+
+	console.log('status:0');
+	console.log('user_category:2');
+	console.log('auth_type:');
+	console.log('user_nickname:');
+	console.log('biz_nickname:静默的声响');
+	console.log('admin_wx_username:and**120');
+	console.log('open_app_type:16');
+	console.log('qrticket:8a153da79246c02de009aa16852744d0');
+	console.log('login_time:');
+	console.log('notifyticket:');
+	console.log('uin:777');
+	console.log('key:777');
+	console.log('pass_ticket:WLRWQ7mbu8L1DutDHxtKdNnOPlZUr6Df+ug64dUPIK0/RP97iPy6KEmNqnLpq4P4');
+	
+</script>
+    </body>
+</html>
+<!--tailTrap<body></body><head></head><html></html>-->
+#+END_SRC
+*** a.weixin.qq page after scan
+#+BEGIN_SRC html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>微信登录</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">
+    <style>
+        .auth_avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px
+        }
+
+        .auth_nickname {
+            display: block;
+            margin-top: -.2em;
+            font-weight: 400;
+            font-size: 20px
+        }
+
+        .auth_desc {
+            color: #888;
+            margin-top: .34em;
+            font-size: 14px
+        }
+
+        .auth_msg {
+            text-align: center;
+            padding: 2.7em 30px 0
+        }
+
+        .auth_msg_hd {
+            font-size: 20px;
+            padding-bottom: 1.4em;
+            margin-bottom: 1.4em;
+            position: relative
+        }
+
+        .auth_msg_hd:after {
+            content: " ";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 1px;
+            border-bottom: 1px solid #D8D8D8;
+            -webkit-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5)
+        }
+
+        .auth_msg_bd {
+            font-size: 14px;
+            text-align: left
+        }
+
+        .auth_msg_ft {
+            margin-top: 2.5em
+        }
+
+        .auth_rights_tips {
+            font-size: 16px;
+            padding-bottom: .4em;
+            color: #000
+        }
+
+        .auth_rights_list {
+            color: #888
+        }
+
+        .auth_rights_item {
+            margin: .34em 0;
+            list-style: none
+        }
+
+        .auth_rights_item_disc {
+            list-style-type: disc;
+            list-style-position: inside
+        }
+
+        .auth_rights_lbl {
+            overflow: hidden
+        }
+
+        .btn_auth_msg_link {
+            display: inline-block;
+            font-size: 14px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            margin-top: .65em;
+            border: none;
+            background: 0 0;
+            color: #4088FF
+        }
+
+        .logo_area_game {
+            padding-top: 6.4em;
+            text-align: center;
+            font-size: 125%
+        }
+
+        .logo_weixin {
+            width: 81px;
+            height: 81px;
+            margin: 0 auto 28px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKIAAACiCAMAAAD1LOYpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iM0RDNDJDMDZGN0E1NkIyMkFCRDBFRDE3MjkzNjZCQjAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUZBQkI0NEIxNjYzMTFFNDg1M0NENjhDREIxRjNCNTIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUZBQkI0NEExNjYzMTFFNDg1M0NENjhDREIxRjNCNTIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZTM0MmQ4ZDctZTg0MC00MjQzLThiMDItMzNiZGRhOWZiMDJkIiBzdFJlZjpkb2N1bWVudElEPSIzREM0MkMwNkY3QTU2QjIyQUJEMEVEMTcyOTM2NkJCMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PltuSwcAAAJPUExURQAAANXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1T/bs9UAAADFdFJOUwABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWWFlaW1xdXl9hYmNkZmdoaWprbG1ucHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKUlZaXmJqbnJ2en6ChoqOkpaanqKmqq6yur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMp/nq7wAABx9JREFUGBntwY9flPUBB/DPHXDATWiKUaGwwpYDFad5bWeipfkDxeZpbJRY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)center no-repeat;
+            background-size: 81px;
+            -webkit-background-size: 81px
+        }
+
+        .logging {
+            text-align: center;
+            font-size: .8em;
+            color: #000;
+            margin-bottom: 10px
+        }
+
+        .icon_checkbox_default {
+            float: left;
+            margin-right: .7em;
+            margin-top: .26em;
+            position: relative;
+            border: 1px solid #D1D1D1;
+            background-color: #FFF;
+            border-radius: 3px;
+            width: 13px;
+            height: 13px
+        }
+
+        .icon_checkbox_default.checked:before {
+            font-family: weui;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            text-align: center;
+            speak: none;
+            display: inline-block;
+            vertical-align: middle;
+            text-decoration: inherit;
+            content: "\EA08";
+            color: #09BB07;
+            font-size: 13px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -48%)scale(.73);
+            -webkit-transform: translate(-50%, -48%)scale(.73)
+        }
+
+        .icon_checkbox_default.disabled {
+            border-color: transparent;
+            background-color: transparent
+        }
+
+        .icon_checkbox_default.disabled:before {
+            display: none
+        }
+
+        .icon_checkbox_default.disabled:after {
+            content: " ";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -2px;
+            margin-top: -2px;
+            width: 4px;
+            height: 4px;
+            background-color: #888;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%
+        }
+
+        input.weui_btn {
+            border: 1px solid rgba(0, 0, 0, .1)
+        }
+    </style>
+</head>
+
+<body>
+    <form class="auth_msg confirm confirm_list_black" id="loginform" onSubmit="return false">
+        <div class="auth_msg_hd">
+            <img src="http://mmbiz.qpic.cn/mmbiz/JcdJOBianRFLp2iczpuD4qMJhAIv3MB3nicYMibqlVozjZ8Fc1wroeQUuoeUduLibZSMPDHhttQTUxDVIhZnxd60JbQ/0/0" class="auth_avatar app_icon">
+            <strong class="auth_nickname">微信广告</strong>
+        </div>
+        <div class="auth_msg_bd">
+            <p class="auth_rights_tips">即将登录微信广告，请确认是本人操作</p>
+            <ul class="auth_rights_list">
+
+                <li class="auth_rights_item">
+                    <i class="icon_checkbox_default disabled"></i>
+                    <input type="hidden" name="snsapi_login" value="on">
+                    <span class="auth_rights_lbl">使用你的帐号登录该应用</span>
+                </li>
+            </ul>
+        </div>
+        <div class="auth_msg_ft">
+            <button id="js_allow" class="weui_btn weui_btn_primary">确认登录</button>
+            <button id="js_cancel" class="weui_btn weui_btn_default">取消</button>
+        </div>
+        <input type="hidden" name="uuid" value="061mA2DI2yTqt2w1">
+        <input type="hidden" name="uin" value="NTY4Mzk1MzA4">
+        <input type="hidden" name="key" value="c83d389af893bb82fd388ae6f3f01f9c1f2d454c08374d2013284783e978d169c47233e2b12334bc079cf7c8d0494445687e2be0df29d7397d8fa118e525c4ae013b7dcd02ed87768096b02ce0e9c703">
+        <input type="hidden" name="pass_ticket" value="70ZeQsXI9WVt/uGmV84xA6hLyXiP4xboWMxmUCx8ub9C8xQq+8yqQmjDCsCTFkvo">
+    </form>
+    <script>
+        var reportUrl = "/connect/authreport?uuid=061mA2DI2yTqt2w1&uin=NTY4Mzk1MzA4&appid=";
+    </script>
+    <script>
+        ! function() {
+            function a(a, b) {
+                url = window.reportUrl + "&staytime=" + a + "&pageerror=" + b;
+                var c = new Image;
+                c.onload = c.onerror = function() {
+                    c = null
+                }, c.src = url
+            }
+            var b = +new Date;
+            window.onerror = function(b, c, d) {
+                var e = [b, navigator.userAgent];
+                a(0, e.join("||"))
+            }, window.onpagehide = function() {
+                var c = +new Date,
+                    d = Math.round((c - b) / 1e3),
+                    e = ["wx6489a10c2ec69602", "wx9097d74006e67df3"];
+                e.indexOf(window.appId) > -1 || a(d, "")
+            }
+        }();
+    </script>
+    <script>
+        ! function() {
+            function a(a) {
+                return document.getElementById(a)
+            }
+
+            function b(a) {
+                return document.getElementsByClassName(a)
+            }
+
+            function c(a, b) {
+                var c = " " + b + " ";
+                return (" " + a.className + " ").replace(/[\n\t]/g, " ").indexOf(c) > -1 ? !0 : !1
+            }
+
+            function d(a, b) {
+                a.className = a.className + " " + b
+            }
+
+            function e(a, b) {
+                a.className = a.className.replace(new RegExp("\\b" + b + "\\b"), "")
+            }
+
+            function f() {
+                WeixinJSBridge.call("hideOptionMenu"), WeixinJSBridge.call("hideToolbar"), "object" == typeof WeixinJSBridge && q && h()
+            }
+
+            function g(b) {
+                if (!r) {
+                    q = !0, r = !0, s = b;
+                    for (var c = a("loginform"), d = {}, e = c.elements, f = e.length - 1; f >= 0; --f) {
+                        var g = e[f];
+                        g.name && (d[g.name] = g.value)
+                    }
+                    b ? d.allow = "allow" : d.cancel = "cancel", j.send({
+                        type: "POST",
+                        url: "/connect/confirm_reply",
+                        params: d
+                    }).done(h), setTimeout(function() {
+                        r = !1
+                    }, 1e3)
+                }
+            }
+
+            function h() {
+                s ? location = "weixin://jump/mainframe" : "object" == typeof WeixinJSBridge && WeixinJSBridge.invoke("closeWindow")
+            }
+            for (var i = "load", j = {
+                    requests: [],
+                    handleEvent: function(a) {
+                        this._load(a)
+                    },
+                    _bind: function(a, b, c) {
+                        b.addEventListener(a, this, !!c)
+                    },
+                    _unbind: function(a, b, c) {
+                        b.removeEventListener(a, this, !!c)
+                    },
+                    _index: function(a, b) {
+                        for (var c = a.length; c--;)
+                            if (b.call(a, a[c])) return c;
+                        return -1
+                    },
+                    _load: function(a) {
+                        var b = a.target,
+                            c = this.requests,
+                            d = this._index(c, function(a) {
+                                return a.xhr === b
+                            }),
+                            e = c[d],
+                            f = e.options;
+                        this._unbind(i, b), f.onload && f.onload.call(this, b.responseText), 1 === c.length || c.splice(d, 1)
+                    },
+                    send: function(a) {
+                        var b, c = this.requests,
+                            d = c.length - 1,
+                            e = c[d];
+                        e && 4 === e.xhr.readyState ? e.options = a : (c.push({
+                            xhr: new XMLHttpRequest,
+                            options: a
+                        }), e = c[++d]), b = e.xhr, this._bind(i, b);
+                        var f, g = a.params,
+                            h = [];
+                        for (var j in g) h.push(j + "=" + encodeURIComponent(g[j]));
+                        f = h.join("&");
+                        var k = a.type,
+                            l = a.url;
+                        return "GET" === k && (l += f ? "?" + f : ""), b.open(k, l, !0), "POST" === k && b.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), b.send(f), this
+                    },
+                    done: function(a) {
+                        var b = this.requests,
+                            c = b.length - 1,
+                            d = b[c];
+                        d.options.onload = a
+                    }
+                }, k = b("js_checkbox"), l = 0, m = k.length; m > l; ++l) ! function(a) {
+                var b = k[a],
+                    f = b.parentNode;
+                f.onclick = function() {
+                    c(b, "checked") ? (e(b, "checked"), f.children[0].removeAttribute("value")) : (d(b, "checked"), f.children[0].setAttribute("value", "on"))
+                }
+            }(l);
+            var n = a("js_close"),
+                o = a("js_allow"),
+                p = a("js_cancel");
+            n && (n.onclick = h), o && (o.onclick = function() {
+                g(!0)
+            }), p && (p.onclick = function() {
+                g(!1)
+            }), document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", f, !1) : document.attachEvent && document.attachEvent("onWeixinJSBridgeReady", f);
+            var q = !1,
+                r = !1,
+                s = !1
+        }();
+    </script>
+</body>
+
+</html>
+#+END_SRC

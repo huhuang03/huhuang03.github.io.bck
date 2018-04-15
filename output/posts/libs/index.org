@@ -1,0 +1,17 @@
+#+BEGIN_COMMENT
+.. title: libs
+.. slug: libs
+.. date: 2018-01-31 16:34:15 UTC+08:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+** Android
+| name                   | desc                          | author            |
+|------------------------+-------------------------------+-------------------|
+| [[https://github.com/amitshekhariitbhu/Android-Debug-Database][Android-Debug-Database]] | 在线查看本项目的数据库        | amitshekhariitbhu |
+| mphttp                 | mp.weixin.qq.com 操作的工具库 | york              |
+| wxxposed               | 微信xposed 操作工具库         | york           |

@@ -1,0 +1,195 @@
+#+BEGIN_COMMENT
+.. title: 安卓锁屏破解
+.. slug: android_lockscreen_crack
+.. date: 2018-01-29 18:18:40 UTC+08:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+** 手势
+*** 步骤
+1. 获取锁屏界面确定按钮id ~footerRightButton~
+2. 找到类 ~ChooseLockPattern~ 中的点击处理函数 ~saveChoosePatternAndFinish~
+将Pattern转换为string的函数
+#+BEGIN_SRC java
+public static String patternToString(List<LockPatternView.Cell> pattern) {
+    if (pattern == null) {
+        return "";
+    }
+    final int patternSize = pattern.size();
+
+    byte[] res = new byte[patternSize];
+    for (int i = 0; i < patternSize; i++) {
+        LockPatternView.Cell cell = pattern.get(i);
+        res[i] = (byte) (cell.getRow() * 3 + cell.getColumn());
+    }
+    return new String(res);
+}
+#+END_SRC
+
+3. 经过一些列的中间函数，调用 ~LockSettingService~ 的 ~writeFile(getLockPatternFilename(userId), hash);~ 这里hash为先将string转换回pattern。然后用pattern算出一个hash值
+#+BEGIN_SRC java
+public static byte[] patternToHash(List<LockPatternView.Cell> pattern) {
+    if (pattern == null) {
+        return null;
+    }
+
+    final int patternSize = pattern.size();
+    byte[] res = new byte[patternSize];
+    for (int i = 0; i < patternSize; i++) {
+        LockPatternView.Cell cell = pattern.get(i);
+        res[i] = (byte) (cell.getRow() * 3 + cell.getColumn());
+    }
+    try {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] hash = md.digest(res);
+        return hash;
+    } catch (NoSuchAlgorithmException nsa) {
+        return res;
+    }
+}
+#+END_SRC
+
+4. fileName为 ~/data/system/gesture.key~
+   
+*** 验证
+使用以下代码来算一个7的手势的hash值
+#+BEGIN_SRC java
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+import java.util.*
+
+
+fun main(args: Array<String>) {
+    println("hello world!")
+    val gesture = LinkedList<Cell>()
+    gesture.add(Cell(0,0))
+    gesture.add(Cell(0,1))
+    gesture.add(Cell(1,1))
+    gesture.add(Cell(2,1))
+
+    val hash = patternToHash(gesture)
+    printByte(hash)
+}
+
+data class Cell(val row: Int, val col: Int)
+
+fun patternToHash(pattern: List<Cell>): ByteArray{
+    val patternSize: Int = pattern.size
+    val res = ByteArray(patternSize)
+
+    for (i in 1 until patternSize) {
+        val cell = pattern.get(i)
+        res[i] = (cell.row * 3 + cell.col).toByte()
+    }
+
+    return try {
+        val md = MessageDigest.getInstance("SHA-1")
+        md.digest(res)
+    } catch (nsa: NoSuchAlgorithmException) {
+        res
+    }
+}
+
+fun printByte(byteArray: ByteArray) {
+    byteArray
+            .map { String.format("%02X", it) }
+            .forEach { print(it) }
+}
+#+END_SRC
+
+1. 设置锁屏密码为7
+2. 取出 /data/system/gesture.key 文件，查看文件内容，会发现和我们算出来的一样。
+   
+** 密码
+*** 步骤
+1. 和之前一样，不过这次调用的是 ~LockSettingService~ 的 ~public void setLockPassword(String password, int userId)~ 方法
+2. 文件为 /data/system/password.key
+3. password转为hash的方法
+#+BEGIN_SRC java
+public byte[] passwordToHash(String password) {
+    if (password == null) {
+        return null;
+    }
+    String algo = null;
+    byte[] hashed = null;
+    try {
+        byte[] saltedPassword = (password + getSalt()).getBytes();
+        byte[] sha1 = MessageDigest.getInstance(algo = "SHA-1").digest(saltedPassword);
+        byte[] md5 = MessageDigest.getInstance(algo = "MD5").digest(saltedPassword);
+        hashed = (toHex(sha1) + toHex(md5)).getBytes();
+    } catch (NoSuchAlgorithmException e) {
+        Log.w(TAG, "Failed to encode string because of missing algorithm: " + algo);
+    }
+    return hashed;
+}
+
+private String getSalt() {
+    long salt = getLong(LOCK_PASSWORD_SALT_KEY, 0);
+    if (salt == 0) {
+        try {
+            salt = SecureRandom.getInstance("SHA1PRNG").nextLong();
+            setLong(LOCK_PASSWORD_SALT_KEY, salt);
+            Log.v(TAG, "Initialized lock password salt");
+        } catch (NoSuchAlgorithmException e) {
+            // Throw an exception rather than storing a password we'll never be able to recover
+            throw new IllegalStateException("Couldn't get SecureRandom number", e);
+        }
+    }
+    return Long.toHexString(salt);
+}
+#+END_SRC
+4. 这里的salt为一个随机数，存储在数据库 /data/system/locksettings.db 中。注意这里可能把db文件拿出来之后没有数据，需要把连带的wal, shm两个文件都拿出来才看得到数据
+
+*** 验证
+同样的步骤，我们的测试密码为 aaa123
+
+测试代码
+#+BEGIN_SRC java
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class Password {
+
+    public static void main(String[] args) {
+        System.out.println(new String(passwordToHash("aaa123")));
+    }
+
+    public static byte[] passwordToHash(String password) {
+        if (password == null) {
+            return null;
+        }
+        String algo = null;
+        byte[] hashed = null;
+        try {
+            byte[] saltedPassword = (password + getSalt()).getBytes();
+            byte[] sha1 = MessageDigest.getInstance(algo = "SHA-1").digest(saltedPassword);
+            byte[] md5 = MessageDigest.getInstance(algo = "MD5").digest(saltedPassword);
+            hashed = (toHex(sha1) + toHex(md5)).getBytes();
+        } catch (NoSuchAlgorithmException e) {
+        }
+        return hashed;
+    }
+
+    private static String toHex(byte[] ary) {
+        final String hex = "0123456789ABCDEF";
+        String ret = "";
+        for (int i = 0; i < ary.length; i++) {
+            ret += hex.charAt((ary[i] >> 4) & 0xf);
+            ret += hex.charAt(ary[i] & 0xf);
+        }
+        return ret;
+    }
+
+    public static final String getSalt() {
+        return Long.toHexString(7775430539427247249L);
+    }
+
+}
+#+END_SRC
+
+** 软硬件环境
+- Android version: 4.4.4

@@ -1,0 +1,28 @@
+#+BEGIN_COMMENT
+.. title: cookie
+.. slug: cookie
+.. date: 2017-12-27 20:09:07 UTC+08:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+** 属性
+| 属性     | 说明                                                   |
+|----------+--------------------------------------------------------|
+| name     | cookie的名字                                           |
+| value    | 值，如果为EXPIRED，则将cookie置为失效                  |
+| path     | 对应的path                                             |
+| Expires  | 失效时间。按一定格式。如Tue, 26-Dec-2017 12:08:25 GMT; |
+| Secure   | 是否是保密                                             |
+| HttpOnly | 是否是HttpOnly                                         |
+
+** Http set
+*** 设置一个有有效期的cookie
+~Set-Cookie: safecode=EXPIRED; Path=/; Expires=Tue, 26-Dec-2017 12:08:25 GMT; Secure; HttpOnly~
+*** 设置一个永久有效的cookie
+~Set-Cookie: ticket=3a9fe9f38e7c59f043508be2b878c5d28b430832; Path=/; Secure; HttpOnly~
+*** 将一个Cookie置为过期，注意时间是之前的时间
+~Set-Cookie: aster_ticket=EXPIRED; Path=/; Expires=Tue, 26-Dec-2017 12:08:25 GMT; Secure; HttpOnly~

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cocos2dx-lua 加载main.lua流程 | My Nikola Site</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://example.com/posts/cocos2dx-android-load-process/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Nikola Tesla">
+<link rel="prev" href="../key_binding/" title="key bindking" type="text/html">
+<link rel="next" href="../learn_music/" title="Learn Music" type="text/html">
+<meta property="og:site_name" content="My Nikola Site">
+<meta property="og:title" content="Cocos2dx-lua 加载main.lua流程">
+<meta property="og:url" content="https://example.com/posts/cocos2dx-android-load-process/">
+<meta property="og:description" content="我们这里以lua语言为cocos2d的语言，以最简单的demo为例。
+
+
+
+
+首先会走到 MainActivity 的 OnCrate 中，然后会调用 Cocos2dActivity 的 OnCreate 。
+并创建 GLServiceView ，最后会调用 Renderer 的 onSurfaceCreated 方法。也就是 Cocos2dReneder 的 Oncreate 方法了。
+
+
+
+
+">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-10-27T14:38:31+08:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://example.com/">
+
+                <span id="blog-title">My Nikola Site</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.org" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Cocos2dx-lua 加载main.lua流程</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    <a href="../../authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-10-27T14:38:31+08:00" itemprop="datePublished" title="2017-10-27 14:38">2017-10-27 14:38</time></a></p>
+            
+        <p class="sourceline"><a href="index.org" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>
+我们这里以lua语言为cocos2d的语言，以最简单的demo为例。
+</p>
+
+
+<p>
+首先会走到 <code>MainActivity</code> 的 <code>OnCrate</code> 中，然后会调用 <code>Cocos2dActivity</code> 的 <code>OnCreate</code> 。
+并创建 <code>GLServiceView</code> ，最后会调用 <code>Renderer</code> 的 <code>onSurfaceCreated</code> 方法。也就是 <code>Cocos2dReneder</code> 的 <code>Oncreate</code> 方法了。
+</p>
+
+
+<p>
+里面会调用 <code>Cocos2dRender</code> 的 <code>nativeInit</code> 方法。对应的 <code>cpp</code> 源码为 <code>javaactivity-android.cpp</code> 文件。
+在目录 <code>root/framewords/cocos2d-x/cocos/platfom/android</code> 目录下
+</p>
+
+<p>
+then <code>javaactivity-android.cpp</code> call <code>cococ2d::Appliction::getInstance()-&gt;run()</code>
+</p>
+
+<p>
+call <code>AppDelegate.applictionDidfinishlaunching()</code>, defined in AppDelegate.cpp file
+</p>
+
+<p>
+<code>applicationDidFinishLaunching</code> 中调用 <code>engine-&gt;executeScriptFile("main.lua")</code> 加载lua文件
+</p>
+
+<div id="outline-container-orgcd348f4" class="outline-2">
+<h2 id="orgcd348f4"><a href="https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.NdkBuildOptions.html">NDK build的配置</a></h2>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../key_binding/" rel="prev" title="key bindking">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../learn_music/" rel="next" title="Learn Music">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:n.tesla@example.com">Nikola Tesla</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

@@ -1,0 +1,27 @@
+#+BEGIN_COMMENT
+.. title: 华为手机刷官方Rom
+.. slug: huawei_android_rom
+.. date: 2018-04-01
+.. tags:
+.. category: Cocos2dx-lua 逆向之路
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+手上一台华为的机子，想Root。但是kingRoot无法成功，只能先尝试刷官方Room。然后重新kingroot了。
+
+操作系统为Mac。
+
+首先[[https://developers.google.com/android/images#mysidspr][下载一个rom]]吧。我也不知道应该哪个，就随便下个4.3版本的系统试试吧。选择 ~4.3 (JLS36C)~ 。
+用迅雷下载确实可以大大提高下载速度，我有8M/s
+
+华为比较坑的是，解锁fastboot需要14天登录华为账号，我们只有14天之后再来看了！2018年04月01日。
+
+顺便加上一些命令
+#+BEGIN_SRC shell
+# 重进进入fastboot模式
+adb reboot bootloader
+# 查询bootloader状态（是否锁住）
+fasboot oem get-bootinfo
+#+END_SRC

@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="This is a demo site for Nikola.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Nikola Site (old posts, page 1) | My Nikola Site</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="https://example.com/index-1.html">
+<link rel="prev" href="." type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://example.com/">
+
+                <span id="blog-title">My Nikola Site</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archive</a>
+                </li>
+<li>
+<a href="categories/">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/cocos2dx-android-load-process/" class="u-url">Cocos2dx-lua 加载main.lua流程</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/cocos2dx-android-load-process/" rel="bookmark"><time class="published dt-published" datetime="2017-10-27T14:38:31+08:00" title="2017-10-27 14:38">2017-10-27 14:38</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>
+我们这里以lua语言为cocos2d的语言，以最简单的demo为例。
+</p>
+
+
+<p>
+首先会走到 <code>MainActivity</code> 的 <code>OnCrate</code> 中，然后会调用 <code>Cocos2dActivity</code> 的 <code>OnCreate</code> 。
+并创建 <code>GLServiceView</code> ，最后会调用 <code>Renderer</code> 的 <code>onSurfaceCreated</code> 方法。也就是 <code>Cocos2dReneder</code> 的 <code>Oncreate</code> 方法了。
+</p>
+
+
+<p>
+里面会调用 <code>Cocos2dRender</code> 的 <code>nativeInit</code> 方法。对应的 <code>cpp</code> 源码为 <code>javaactivity-android.cpp</code> 文件。
+在目录 <code>root/framewords/cocos2d-x/cocos/platfom/android</code> 目录下
+</p>
+
+<p>
+then <code>javaactivity-android.cpp</code> call <code>cococ2d::Appliction::getInstance()-&gt;run()</code>
+</p>
+
+<p>
+call <code>AppDelegate.applictionDidfinishlaunching()</code>, defined in AppDelegate.cpp file
+</p>
+
+<p>
+<code>applicationDidFinishLaunching</code> 中调用 <code>engine-&gt;executeScriptFile("main.lua")</code> 加载lua文件
+</p>
+
+<div id="outline-container-orgcd348f4" class="outline-2">
+<h2 id="orgcd348f4"><a href="https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.NdkBuildOptions.html">NDK build的配置</a></h2>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/key_binding/" class="u-url">key bindking</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/key_binding/" rel="bookmark"><time class="published dt-published" datetime="2017-10-16T09:41:28+08:00" title="2017-10-16 09:41">2017-10-16 09:41</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-org7558419" class="outline-2">
+<h2 id="org7558419">查找文件</h2>
+<div class="outline-text-2" id="text-org7558419">
+<ul class="org-ul">
+<li>
+<p>
+在工程中查找文件
+</p>
+
+<p>
+<code>cmd + shift + o</code> 或者 <code>cmd + o</code>
+</p>
+</li>
+</ul>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2017_learn_list/" class="u-url">2017 learn list</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/2017_learn_list/" rel="bookmark"><time class="published dt-published" datetime="2017-09-19T22:10:06+08:00" title="2017-09-19 22:10">2017-09-19 22:10</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-org8cf71d2" class="outline-2">
+<h2 id="org8cf71d2">书籍</h2>
+<div class="outline-text-2" id="text-org8cf71d2">
+</div>
+<div id="outline-container-orgb49e01c" class="outline-3">
+<h3 id="orgb49e01c">Writing gun emacs extensions</h3>
+<div class="outline-text-3" id="text-orgb49e01c">
+<ul class="org-ul">
+<li>语言：英文</li>
+<li>描述：学习emacs</li>
+<li>链接：<a href="https://www.dropbox.com/sh/d377uvoq012ts95/AADKgHp5EHE3oIw4AOvYrEtIa?dl=0">books</a>
+</li>
+<li>进度：已完成</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeff12ec" class="outline-2">
+<h2 id="orgeff12ec">视频</h2>
+<div class="outline-text-2" id="text-orgeff12ec">
+</div>
+<div id="outline-container-org57e6d2b" class="outline-3">
+<h3 id="org57e6d2b">Using Emacs Series</h3>
+<div class="outline-text-3" id="text-org57e6d2b">
+<ul class="org-ul">
+<li>描述：学习Emacs</li>
+<li>进度：Done</li>
+<li>链接：<a href="http://cestlaz.github.io/stories/emacs/">http://cestlaz.github.io/stories/emacs/</a>
+</li>
+<li>评价：四星，后面有点不通俗易懂</li>
+</ul>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/wechat_scan_qrcode_crack/" class="u-url">Wechat scan qrcode crack</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/nikola-tesla/">Nikola Tesla</a>
+            </span></p>
+            <p class="dateline"><a href="posts/wechat_scan_qrcode_crack/" rel="bookmark"><time class="published dt-published" datetime="2017-09-19T18:14:58+08:00" title="2017-09-19 18:14">2017-09-19 18:14</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div id="outline-container-orgf8a6943" class="outline-2">
+<h2 id="orgf8a6943">Flow</h2>
+<div class="outline-text-2" id="text-orgf8a6943">
+<ul class="org-ul">
+<li>Scan a qrcode, get the url</li>
+<li>Get pass_ticket by send <code>GetA8Key</code> request</li>
+<li>Append pass_ticket to url and then open <code>WebViewUI Actiivty</code>
+</li>
+<li>Send <code>GetA8Key</code> again to get other info, include <code>http_headers</code>
+</li>
+<li>Call <code>WebView.open(url, http_headers)</code>
+</li>
+<li>If we use httpRequest to call(url, http_headers), It will be detection by wechat. Why?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd9fe53c" class="outline-2">
+<h2 id="orgd9fe53c">A8key flow</h2>
+<div class="outline-text-2" id="text-orgd9fe53c">
+<p>
+What is th a8key flow
+</p>
+
+<p>
+The orignal flow is:
+</p>
+<ul class="org-ul">
+<li>After BaseSearchUI get qrcoce url, call <code>QBarStringHandler.deal()</code>
+</li>
+<li>
+<code>deal</code> method <code>send GetA8Key</code> request, use <code>NetSceneQueue.enqueue()</code> method.</li>
+<li>And <code>QrBarStringHandle</code> call <code>NetScenequeue.addCallback</code> method to add self to callbacks.</li>
+<li>get pass_ticet from <code>GetA8key.Ja</code> which is the full url</li>
+<li>get request_header use previous flow again</li>
+<li>get the new full url to and the request_header</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org23733a1" class="outline-2">
+<h2 id="org23733a1">Project</h2>
+<div class="outline-text-2" id="text-org23733a1">
+<p>
+Use com.th.xposed:wx_xpsoed lib.
+</p>
+</div>
+</div>
+<div id="outline-container-org136763a" class="outline-2">
+<h2 id="org136763a">some useful note</h2>
+<div class="outline-text-2" id="text-org136763a">
+</div>
+<div id="outline-container-org9822b01" class="outline-3">
+<h3 id="org9822b01">mp.weixin.qq common scan, capture</h3>
+<div class="outline-text-3" id="text-org9822b01">
+<div class="highlight"><pre><span></span>GET /wap/loginauthqrcode?action=scan&amp;qrticket=a0313df4e8d201402fd9818178b094d0&amp;pass_ticket=KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt%2B3XJSIFHRh1S37sn&amp;wx_header=1 HTTP/1.1
+host : mp.weixin.qq.com
+connection : keep-alive
+accept : text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+upgrade-insecure-requests : 1
+user-agent : Mozilla/5.0 (Linux; Android 6.0.1; ZUK Z2131 Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/48.0.2564.106 Mobile Safari/537.36 MicroMessenger/6.5.4.1000 NetType/WIFI Language/zh_CN
+x-wechat-uin : NTY4Mzk1MzA4
+x-wechat-key : eaa6a79f5ebe58c1090f98afa36c0900cb903ffb9115e358335bbce5df47e3938561df85ae89bdba853682912f2e9ccd1efe7fbc3b42415f0658ac058a8f4f13c26e6c6e693c242469543ec2f6558114
+accept-language : zh-CN,en-US;q=0.8
+cookie : pgv_info=ssid=s4670494987; pgv_pvid=6500664195; wxtokenkey=a9a9b2f1717d87d2acbc537cef71f1b32d434463d55d701c640695781d5acfc2; wxuin=568395308; pass_ticket=KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn; wap_sid2=CKyMhI8CEkhNMVpfWU9NOENWMnA1U053SHAxRmFBTTlFR0NlcHNsMWZidm80Q2s4LWZtdUYxME9jSWhuajZ0M1ZiSnl5LTZobXdNQUFBfn4w4smZzgU4DEAF
+x-requested-with : com.tencent.mm
+content-length : 0
+request body
+
+response header
+
+HTTP/1.1 200
+content-type : text/html; charset=UTF-8
+cache-control : no-cache, must-revalidate
+strict-transport-security : max-age=15552000
+set-cookie : wxuin=568395308; Path=/; HttpOnlypass_ticket=KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn; Path=/; HttpOnlywap_sid2=CKyMhI8CEkh4Z1VndjJWVnE3VTgtVmV0WHhwYTQ3NUFjZU5JQnZJQjdrbmZCQXM3S2ZUREd4UnRjc01Gc09jS01MYXVQV3MtbXdNQUFBfn4w8NKZzgU4DEAF; Path=/; HttpOnly
+connection : keep-alive
+
+
+&lt;!DOCTYPE html&gt;
+&lt;!--headTrap&lt;body&gt;&lt;/body&gt;&lt;head&gt;&lt;/head&gt;&lt;html&gt;&lt;/html&gt;--&gt;&lt;html&gt;
+    &lt;head&gt;
+	&lt;meta http-equiv=Content-Type content="text/html;charset=utf-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"&gt;
+&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+&lt;meta name="apple-mobile-web-app-status-bar-style" content="black"&gt;
+&lt;meta name="format-detection" content="telephone=no"&gt;
+	&lt;title&gt;公众平台安全保护&lt;/title&gt;
+
+
+&lt;link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css"/&gt;
+&lt;link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/safe/w_safe3301b4.css"/&gt;
+
+    &lt;/head&gt;
+    &lt;body class="zh_CN " ontouchstart=""&gt;
+
+
+
+
+
+				&lt;div class="page_msg_t js_msg"&gt;
+				    &lt;i class="icon_msg waiting"&gt;&lt;/i&gt;
+				    &lt;div class="text_area_t"&gt;
+						&lt;div class="text"&gt;
+							&lt;h1 class="title"&gt;你确认要发送登录申请到公众平台&lt;br/&gt;管理员微信ma9**0_cm吗?&lt;/h1&gt;
+						&lt;/div&gt;
+				    &lt;/div&gt;
+				    &lt;div class="opr_area"&gt;
+					&lt;p class="btn_area"&gt;
+					    &lt;a href="javascript:" class="btn btn_primary" id="js_allow"&gt;确定&lt;/a&gt;
+							&lt;a href="javascript:" class="btn btn_default" id="js_cancel"&gt;取消&lt;/a&gt;
+					&lt;/p&gt;
+				    &lt;/div&gt;
+				&lt;/div&gt;
+
+	&lt;div id="js_cancel_box" class="page_msg_t js_msg" style="display: none;"&gt;
+	&lt;i class="icon_msg warn"&gt;&lt;/i&gt;
+	&lt;div class="text_area_t"&gt;
+		&lt;div class="text"&gt;
+			&lt;h1 class="title"&gt;已取消育儿亲子手册&lt;br&gt;本次登录操作&lt;/h1&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="js_apply_box" class="page_msg_t js_msg" style="display: none;"&gt;
+	&lt;i class="icon_msg success"&gt;&lt;/i&gt;
+	&lt;div class="text_area_t"&gt;
+		&lt;div class="text"&gt;
+			&lt;h1 class="title"&gt;已发送育儿亲子手册&lt;br&gt;登录申请&lt;/h1&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="js_success_box" class="weui-msg js_msg" style="display: none;"&gt;
+    &lt;div class="weui-msg__icon-area"&gt;&lt;i class="weui-icon-success weui-icon_msg"&gt;&lt;/i&gt;&lt;/div&gt;
+	&lt;div class="weui-msg__text-area"&gt;
+	&lt;h1 class="weui-msg__title"&gt;已确认登录公众号&lt;/h1&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+	&lt;script nonce=""&gt;
+    var __DEBUGINFO = {
+	debug_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/debug/console34c264.js",
+	safe_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/safe/moonsafe34c264.js",
+	res_list: []
+    };
+&lt;/script&gt;
+
+&lt;script nonce=""&gt;
+(function() {
+	function _addVConsole(uri) {
+		var url = '//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/' + uri;
+		document.write('&lt;script nonce="" type="text/javascript" src="' + url + '"&gt;&lt;\/script&gt;');
+	}
+	if (
+		(document.cookie &amp;&amp; document.cookie.indexOf('vconsole_open=1') &gt; -1)
+		|| location.href.indexOf('vconsole=1') &gt; -1
+	) {
+		_addVConsole('2.5.1/vconsole.min.js');
+		_addVConsole('plugin/vconsole-elements/1.0.2/vconsole-elements.min.js');
+		_addVConsole('plugin/vconsole-sources/1.0.1/vconsole-sources.min.js');
+		_addVConsole('plugin/vconsole-resources/1.0.0/vconsole-resources.min.js');
+		_addVConsole('plugin/vconsole-mpopt/1.0.0/vconsole-mpopt.js');
+	}
+})();
+&lt;/script&gt;
+	&lt;script&gt;window.__moon_host = 'res.wx.qq.com';window.moon_map = {"biz_wap/jsapi/core.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/jsapi/core34c264.js","biz_wap/utils/mmversion.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/mmversion34c264.js","biz_wap/utils/log.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/log34c264.js","appmsg/log.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/log300330.js","safe/w_login.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/safe/w_login37cd31.js"};&lt;/script&gt;&lt;script type="text/javascript"&gt;window.__wxgspeeds={}; window.__wxgspeeds.moonloadtime=+new Date()&lt;/script&gt;&lt;script onerror="wx_loaderror(this)"  type="text/javascript" src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon368f86.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	console.log('已进入原有逻辑。');
+	var L = {};
+	L.ajax = function(obj){
+	    var type  = (obj.type || 'GET').toUpperCase();
+	    var url   = obj.url;
+	    var async = typeof obj.async == 'undefined' ? true : obj.async;
+	    var xhr   = new XMLHttpRequest();
+	    var timer = null;
+
+	    var data = null;
+	    if (typeof obj.data == "object"){
+		var d = obj.data;
+		data = [];
+		for(var k in d) {
+		    if (d.hasOwnProperty(k)){
+			data.push(k + "=" + encodeURIComponent(d[k]));
+		    }
+		}
+		data = data.join("&amp;");
+	    }else{
+		data = typeof obj.data  == 'string' ? obj.data : null;
+	    }
+	    if( typeof obj.timeout != 'undefined' ){
+		timer = setTimeout(function(){
+		    xhr.abort("timeout");
+		    obj.complete &amp;&amp; obj.complete();
+		    obj.complete = null;
+		}, +obj.timeout);
+	    }
+
+	    xhr.open(type, url, async);
+	    xhr.onreadystatechange = function(){
+		if( xhr.readyState == 3 ){
+		    obj.received &amp;&amp; obj.received(xhr);
+		}
+		if( xhr.readyState == 4 ){
+		    if( xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 400 ){
+			obj.success &amp;&amp; obj.success(xhr.responseText);
+		    } else {
+			obj.error &amp;&amp; obj.error(xhr);
+		    }
+		    timer &amp;&amp; clearTimeout(timer);
+		    obj.complete &amp;&amp; obj.complete(xhr);
+		    obj.complete = null;
+		}
+	    };
+	    if( type == 'POST' ){
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+	    }
+	    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	    xhr.send(data);
+	};
+	L.parseJson = window.JSON ? JSON.parse : function(str){ return eval('(' + str + ')')};
+	L.id = function(_id){
+		var isid = (_id.indexOf("#") == 0),
+			ele = _id.substr(1, _id.length - 1);
+		return isid ? document.getElementById(ele) : document.getElementsByClassName(ele)[0];
+	};
+	L.on = function(el, type, cb, flag){
+		if(!el){return;}
+		var handler = function(e){
+			var ret = cb(e);
+			if(ret === false){
+				e.stopPropagation &amp;&amp; (e.stopPropagation());
+				e.preventDefault &amp;&amp; (e.preventDefault());
+			}
+		};
+		cb[type + "_handler"] = handler;
+		if(el.addEventListener){
+			el.addEventListener(type, handler, !!flag);
+			return;
+		}
+		if(el.attachEvent){
+			el.attachEvent("on" + type, handler,!!flag);
+			return;
+		}
+	};
+	L.show = function(ele){L.id(ele).style.display = "block"};
+	L.hide = function(ele){L.id(ele).style.display = "none"};
+
+	var _allowerror = "确认失败，请重试",
+		_cancelerror = "取消失败，请重试";
+
+	L.on(L.id("#js_allow"), 'click', function(e){
+		L.ajax({
+			'url': location.pathname + '?action=confirm',
+			'type': 'POST',
+			'async': false,
+			'timeout': 120000,
+			'data': {
+				param: 'qrticket',
+				qrticket: 'a0313df4e8d201402fd9818178b094d0',
+				uin: '777',
+				key: '777',
+				pass_ticket: 'KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn',
+				appmsg_token: '923_6O1pIQySvKOkJJgbn9ty3GVlBn2qMwX4CfNNHg~~',
+				f: 'json'
+			},
+			'success': function(ret){
+				if(!ret){
+					alert(_allowerror + '(err:1)');
+				}else{
+					console.log(ret);
+					ret = (typeof ret == 'string') ? JSON.parse(ret) : ret;
+					if(ret.base_resp &amp;&amp; ret.base_resp.ret == 0){
+						L.hide('.js_msg');
+						if('1'==1){  
+							L.show('#js_apply_box');
+						}else{
+							L.show('#js_success_box');
+						}
+					}else if(ret.base_resp &amp;&amp; ret.base_resp.ret == -3 || ret.ret == -3 || ret.BaseResp &amp;&amp; ret.BaseResp.ret == -3) {
+						(new Image()).src = location.protocol + "//mp.weixin.qq.com/mp/jsmonitor?idkey=24729_97_1";
+						alert('操作失败，可尝试退出登录个人微信号（设置-退出登录）后，重新登录进行操作。'); 
+					}else{
+						alert(_allowerror + '(err:2,ret:'+ JSON.stringify(ret) +')');
+					}
+				}
+			},
+			'error': function(xhr){
+				alert(_allowerror + '(err:3)');
+			},
+			'complete': function(xhr){
+				if(!xhr){
+					alert(_allowerror + '(err:4)');
+				}
+			}
+		});
+	});
+
+	L.on(L.id("#js_cancel"), 'click', function(e){
+		L.ajax({
+			'url': location.pathname + '?action=reject',
+			'type': 'POST',
+			'async': false,
+			'timeout': 120000,
+			'data': {
+				param: 'qrticket',
+				qrticket: 'a0313df4e8d201402fd9818178b094d0',
+				uin: '777',
+				key: '777',
+				pass_ticket: 'KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn',
+				appmsg_token: '923_6O1pIQySvKOkJJgbn9ty3GVlBn2qMwX4CfNNHg~~',
+				f: 'json'
+			},
+			'success': function(ret){
+				if(!ret){
+					alert(_cancelerror + '(err:1)');
+				}else{
+					console.log(ret);
+					ret = (typeof ret == 'string') ? JSON.parse(ret) : ret;
+					if(ret.base_resp &amp;&amp; ret.base_resp.ret == 0){
+						L.hide('.js_msg');
+						L.show('#js_cancel_box');
+					}else if(ret.base_resp &amp;&amp; ret.base_resp.ret == -3 || ret.ret == -3 || ret.BaseResp &amp;&amp; ret.BaseResp.ret == -3) {
+						(new Image()).src = location.protocol + "//mp.weixin.qq.com/mp/jsmonitor?idkey=24729_98_1";
+						alert('操作失败，可尝试退出登录个人微信号（设置-退出登录）后，重新登录进行操作。'); 
+					}else{
+						alert(_cancelerror + '(err:2,ret:'+ JSON.stringify(ret) +')');
+					}
+				}
+			},
+			'error': function(xhr){
+				alert(_cancelerror + '(err:3)');
+			},
+			'complete': function(xhr){
+				if(!xhr){
+					alert(_cancelerror + '(err:4)');
+				}
+			}
+		});
+	});
+
+	var login_time = '';
+	if(login_time){
+	    var js_time = document.querySelector("#js_time");
+	    var _tmp_Time = new Date(Number(login_time)*1000);
+	    js_time &amp;&amp; (js_time.innerHTML = (String(_tmp_Time.getFullYear()) + '-' +  String(_tmp_Time.getMonth()+1) + '-' + String(_tmp_Time.getDate()) + ' ' + (String(_tmp_Time.getHours()).length== 1 ? '0' + String(_tmp_Time.getHours()) : String(_tmp_Time.getHours())) + ':' + (String(_tmp_Time.getMinutes()).length == 1 ? '0' + String(_tmp_Time.getMinutes()) : String(_tmp_Time.getMinutes()))));
+	}
+
+	console.log('status:0');
+	console.log('user_category:1');
+	console.log('auth_type:');
+	console.log('user_nickname:');
+	console.log('biz_nickname:育儿亲子手册');
+	console.log('admin_wx_username:ma9**0_cm');
+	console.log('open_app_type:16');
+	console.log('qrticket:a0313df4e8d201402fd9818178b094d0');
+	console.log('login_time:');
+	console.log('notifyticket:');
+	console.log('uin:777');
+	console.log('key:777');
+	console.log('pass_ticket:KhLu6fgvkcgcm2ZmY0nb8EL7rBpNiolDdz3x02hbeD4BJZvt+3XJSIFHRh1S37sn');
+
+&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+&lt;!--tailTrap&lt;body&gt;&lt;/body&gt;&lt;head&gt;&lt;/head&gt;&lt;html&gt;&lt;/html&gt;--&gt;
+</pre></div>
+</div>
+</div>
+<div id="outline-container-org02158c5" class="outline-3">
+<h3 id="org02158c5">mp.weixin.qq manager scan. page source</h3>
+<div class="outline-text-3" id="text-org02158c5">
+<div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;!--headTrap&lt;body&gt;&lt;/body&gt;&lt;head&gt;&lt;/head&gt;&lt;html&gt;&lt;/html&gt;--&gt;&lt;html&gt;
+    &lt;head&gt;
+	&lt;meta http-equiv=Content-Type content="text/html;charset=utf-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"&gt;
+&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+&lt;meta name="apple-mobile-web-app-status-bar-style" content="black"&gt;
+&lt;meta name="format-detection" content="telephone=no"&gt;
+	&lt;title&gt;公众平台安全保护&lt;/title&gt;
+
+
+&lt;link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css"/&gt;
+&lt;link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css" href="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/safe/w_safe3301b4.css"/&gt;
+
+    &lt;/head&gt;
+    &lt;body class="zh_CN " ontouchstart=""&gt;
+
+
+
+
+							&lt;div class="weui-msg js_msg"&gt;
+		    &lt;div class="weui-msg__icon-area"&gt;&lt;i class="weui-icon-waiting weui-icon_msg"&gt;&lt;/i&gt;&lt;/div&gt;
+				    &lt;div class="weui-msg__text-area"&gt;
+			&lt;h2 class="weui-msg__title"&gt;你确认要登录公众号&lt;br/&gt;静默的声响吗?&lt;/h2&gt;
+				    &lt;/div&gt;
+				    &lt;div class="weui-msg__opr-area"&gt;
+					&lt;p class="weui-btn-area"&gt;
+					    &lt;a href="javascript:" class="weui-btn weui-btn_primary" id="js_allow"&gt;确定&lt;/a&gt;
+							&lt;a href="javascript:" class="weui-btn weui-btn_default" id="js_cancel"&gt;取消&lt;/a&gt;
+					&lt;/p&gt;
+				    &lt;/div&gt;
+				&lt;/div&gt;
+						&lt;div id="js_cancel_box" class="page_msg_t js_msg" style="display: none;"&gt;
+	&lt;i class="icon_msg warn"&gt;&lt;/i&gt;
+	&lt;div class="text_area_t"&gt;
+		&lt;div class="text"&gt;
+			&lt;h1 class="title"&gt;已取消静默的声响&lt;br&gt;本次登录操作&lt;/h1&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="js_apply_box" class="page_msg_t js_msg" style="display: none;"&gt;
+	&lt;i class="icon_msg success"&gt;&lt;/i&gt;
+	&lt;div class="text_area_t"&gt;
+		&lt;div class="text"&gt;
+			&lt;h1 class="title"&gt;已发送静默的声响&lt;br&gt;登录申请&lt;/h1&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="js_success_box" class="weui-msg js_msg" style="display: none;"&gt;
+    &lt;div class="weui-msg__icon-area"&gt;&lt;i class="weui-icon-success weui-icon_msg"&gt;&lt;/i&gt;&lt;/div&gt;
+	&lt;div class="weui-msg__text-area"&gt;
+	&lt;h1 class="weui-msg__title"&gt;已确认登录公众号&lt;/h1&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+	&lt;script nonce=""&gt;
+    var __DEBUGINFO = {
+	debug_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/debug/console34c264.js",
+	safe_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/safe/moonsafe34c264.js",
+	res_list: []
+    };
+&lt;/script&gt;
+
+&lt;script nonce="" type="text/javascript"&gt;
+(function() {
+	var totalCount = 0,
+			finishCount = 0;
+
+	function _loadVConsolePlugin() {
+		window.vConsole = new window.VConsole();
+		while (window.vConsolePlugins.length &gt; 0) {
+			var p = window.vConsolePlugins.shift();
+			window.vConsole.addPlugin(p);
+		}
+	}
+
+	function _addVConsole(uri, cb) {
+		totalCount++;
+		var url = '//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/' + uri;
+		var node = document.createElement('SCRIPT');
+		node.type = 'text/javascript';
+		node.src = url;
+		node.setAttribute('nonce', '');
+		if (cb) {
+			node.onload = cb;
+		}
+		document.getElementsByTagName('head')[0].appendChild(node);
+	}
+	if (
+		(document.cookie &amp;&amp; document.cookie.indexOf('vconsole_open=1') &gt; -1)
+		|| location.href.indexOf('vconsole=1') &gt; -1
+	) {
+		window.vConsolePlugins = [];
+		_addVConsole('3.0.0/vconsole.min.js', function() {
+
+			_addVConsole('plugin/vconsole-mpopt/1.0.1/vconsole-mpopt.js', _loadVConsolePlugin);
+		});
+	}
+})();
+&lt;/script&gt;
+	&lt;script&gt;window.__moon_host = 'res.wx.qq.com';window.moon_map = {"biz_wap/jsapi/core.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/jsapi/core34c264.js","biz_wap/utils/mmversion.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/mmversion34c264.js","biz_wap/utils/log.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/log34c264.js","appmsg/log.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/log300330.js","safe/w_login.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/safe/w_login37cd31.js"};&lt;/script&gt;&lt;script type="text/javascript"&gt;window.__wxgspeeds={}; window.__wxgspeeds.moonloadtime=+new Date()&lt;/script&gt;&lt;script onerror="wx_loaderror(this)"  type="text/javascript" src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon368f86.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	console.log('已进入原有逻辑。');
+	var L = {};
+	L.ajax = function(obj){
+	    var type  = (obj.type || 'GET').toUpperCase();
+	    var url   = obj.url;
+	    var async = typeof obj.async == 'undefined' ? true : obj.async;
+	    var xhr   = new XMLHttpRequest();
+	    var timer = null;
+
+	    var data = null;
+	    if (typeof obj.data == "object"){
+		var d = obj.data;
+		data = [];
+		for(var k in d) {
+		    if (d.hasOwnProperty(k)){
+			data.push(k + "=" + encodeURIComponent(d[k]));
+		    }
+		}
+		data = data.join("&amp;");
+	    }else{
+		data = typeof obj.data  == 'string' ? obj.data : null;
+	    }
+	    if( typeof obj.timeout != 'undefined' ){
+		timer = setTimeout(function(){
+		    xhr.abort("timeout");
+		    obj.complete &amp;&amp; obj.complete();
+		    obj.complete = null;
+		}, +obj.timeout);
+	    }
+
+	    xhr.open(type, url, async);
+	    xhr.onreadystatechange = function(){
+		if( xhr.readyState == 3 ){
+		    obj.received &amp;&amp; obj.received(xhr);
+		}
+		if( xhr.readyState == 4 ){
+		    if( xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 400 ){
+			obj.success &amp;&amp; obj.success(xhr.responseText);
+		    } else {
+			obj.error &amp;&amp; obj.error(xhr);
+		    }
+		    timer &amp;&amp; clearTimeout(timer);
+		    obj.complete &amp;&amp; obj.complete(xhr);
+		    obj.complete = null;
+		}
+	    };
+	    if( type == 'POST' ){
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+	    }
+	    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	    xhr.send(data);
+	};
+	L.parseJson = window.JSON ? JSON.parse : function(str){ return eval('(' + str + ')')};
+	L.id = function(_id){
+		var isid = (_id.indexOf("#") == 0),
+			ele = _id.substr(1, _id.length - 1);
+		return isid ? document.getElementById(ele) : document.getElementsByClassName(ele)[0];
+	};
+	L.on = function(el, type, cb, flag){
+		if(!el){return;}
+		var handler = function(e){
+			var ret = cb(e);
+			if(ret === false){
+				e.stopPropagation &amp;&amp; (e.stopPropagation());
+				e.preventDefault &amp;&amp; (e.preventDefault());
+			}
+		};
+		cb[type + "_handler"] = handler;
+		if(el.addEventListener){
+			el.addEventListener(type, handler, !!flag);
+			return;
+		}
+		if(el.attachEvent){
+			el.attachEvent("on" + type, handler,!!flag);
+			return;
+		}
+	};
+	L.show = function(ele){L.id(ele).style.display = "block"};
+	L.hide = function(ele){L.id(ele).style.display = "none"};
+
+	var _allowerror = "确认失败，请重试",
+		_cancelerror = "取消失败，请重试";
+
+	L.on(L.id("#js_allow"), 'click', function(e){
+		L.ajax({
+			'url': location.pathname + '?action=confirm',
+			'type': 'POST',
+			'async': false,
+			'timeout': 120000,
+			'data': {
+				param: 'qrticket',
+				qrticket: '8a153da79246c02de009aa16852744d0',
+				uin: '777',
+				key: '777',
+				pass_ticket: 'WLRWQ7mbu8L1DutDHxtKdNnOPlZUr6Df+ug64dUPIK0/RP97iPy6KEmNqnLpq4P4',
+				appmsg_token: '924_V2l5Wbe%2BYGLrSXd%2BavAFewnwMgx-DGTe21hDZA~~',
+				f: 'json'
+			},
+			'success': function(ret){
+				if(!ret){
+					alert(_allowerror + '(err:1)');
+				}else{
+					console.log(ret);
+					ret = (typeof ret == 'string') ? JSON.parse(ret) : ret;
+					if(ret.base_resp &amp;&amp; ret.base_resp.ret == 0){
+						L.hide('.js_msg');
+						if('2'==1){  
+							L.show('#js_apply_box');
+						}else{
+							L.show('#js_success_box');
+						}
+					}else if(ret.base_resp &amp;&amp; ret.base_resp.ret == -3 || ret.ret == -3 || ret.BaseResp &amp;&amp; ret.BaseResp.ret == -3) {
+						(new Image()).src = location.protocol + "//mp.weixin.qq.com/mp/jsmonitor?idkey=24729_97_1";
+						alert('操作失败，可尝试退出登录个人微信号（设置-退出登录）后，重新登录进行操作。'); 
+					}else{
+						alert(_allowerror + '(err:2,ret:'+ JSON.stringify(ret) +')');
+					}
+				}
+			},
+			'error': function(xhr){
+				alert(_allowerror + '(err:3)');
+			},
+			'complete': function(xhr){
+				if(!xhr){
+					alert(_allowerror + '(err:4)');
+				}
+			}
+		});
+	});
+
+	L.on(L.id("#js_cancel"), 'click', function(e){
+		L.ajax({
+			'url': location.pathname + '?action=reject',
+			'type': 'POST',
+			'async': false,
+			'timeout': 120000,
+			'data': {
+				param: 'qrticket',
+				qrticket: '8a153da79246c02de009aa16852744d0',
+				uin: '777',
+				key: '777',
+				pass_ticket: 'WLRWQ7mbu8L1DutDHxtKdNnOPlZUr6Df+ug64dUPIK0/RP97iPy6KEmNqnLpq4P4',
+				appmsg_token: '924_V2l5Wbe%2BYGLrSXd%2BavAFewnwMgx-DGTe21hDZA~~',
+				f: 'json'
+			},
+			'success': function(ret){
+				if(!ret){
+					alert(_cancelerror + '(err:1)');
+				}else{
+					console.log(ret);
+					ret = (typeof ret == 'string') ? JSON.parse(ret) : ret;
+					if(ret.base_resp &amp;&amp; ret.base_resp.ret == 0){
+						L.hide('.js_msg');
+						L.show('#js_cancel_box');
+					}else if(ret.base_resp &amp;&amp; ret.base_resp.ret == -3 || ret.ret == -3 || ret.BaseResp &amp;&amp; ret.BaseResp.ret == -3) {
+						(new Image()).src = location.protocol + "//mp.weixin.qq.com/mp/jsmonitor?idkey=24729_98_1";
+						alert('操作失败，可尝试退出登录个人微信号（设置-退出登录）后，重新登录进行操作。'); 
+					}else{
+						alert(_cancelerror + '(err:2,ret:'+ JSON.stringify(ret) +')');
+					}
+				}
+			},
+			'error': function(xhr){
+				alert(_cancelerror + '(err:3)');
+			},
+			'complete': function(xhr){
+				if(!xhr){
+					alert(_cancelerror + '(err:4)');
+				}
+			}
+		});
+	});
+
+	var login_time = '';
+	if(login_time){
+	    var js_time = document.querySelector("#js_time");
+	    var _tmp_Time = new Date(Number(login_time)*1000);
+	    js_time &amp;&amp; (js_time.innerHTML = (String(_tmp_Time.getFullYear()) + '-' +  String(_tmp_Time.getMonth()+1) + '-' + String(_tmp_Time.getDate()) + ' ' + (String(_tmp_Time.getHours()).length== 1 ? '0' + String(_tmp_Time.getHours()) : String(_tmp_Time.getHours())) + ':' + (String(_tmp_Time.getMinutes()).length == 1 ? '0' + String(_tmp_Time.getMinutes()) : String(_tmp_Time.getMinutes()))));
+	}
+
+	console.log('status:0');
+	console.log('user_category:2');
+	console.log('auth_type:');
+	console.log('user_nickname:');
+	console.log('biz_nickname:静默的声响');
+	console.log('admin_wx_username:and**120');
+	console.log('open_app_type:16');
+	console.log('qrticket:8a153da79246c02de009aa16852744d0');
+	console.log('login_time:');
+	console.log('notifyticket:');
+	console.log('uin:777');
+	console.log('key:777');
+	console.log('pass_ticket:WLRWQ7mbu8L1DutDHxtKdNnOPlZUr6Df+ug64dUPIK0/RP97iPy6KEmNqnLpq4P4');
+
+&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+&lt;!--tailTrap&lt;body&gt;&lt;/body&gt;&lt;head&gt;&lt;/head&gt;&lt;html&gt;&lt;/html&gt;--&gt;
+</pre></div>
+</div>
+</div>
+<div id="outline-container-org9e3b453" class="outline-3">
+<h3 id="org9e3b453">a.weixin.qq page after scan</h3>
+<div class="outline-text-3" id="text-org9e3b453">
+<div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;微信登录&lt;/title&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"&gt;
+    &lt;link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css"&gt;
+    &lt;style&gt;
+	.auth_avatar {
+	    width: 70px;
+	    height: 70px;
+	    border-radius: 5px;
+	    -moz-border-radius: 5px;
+	    -webkit-border-radius: 5px
+	}
+
+	.auth_nickname {
+	    display: block;
+	    margin-top: -.2em;
+	    font-weight: 400;
+	    font-size: 20px
+	}
+
+	.auth_desc {
+	    color: #888;
+	    margin-top: .34em;
+	    font-size: 14px
+	}
+
+	.auth_msg {
+	    text-align: center;
+	    padding: 2.7em 30px 0
+	}
+
+	.auth_msg_hd {
+	    font-size: 20px;
+	    padding-bottom: 1.4em;
+	    margin-bottom: 1.4em;
+	    position: relative
+	}
+
+	.auth_msg_hd:after {
+	    content: " ";
+	    position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    right: 0;
+	    height: 1px;
+	    border-bottom: 1px solid #D8D8D8;
+	    -webkit-transform-origin: 0 100%;
+	    transform-origin: 0 100%;
+	    -webkit-transform: scaleY(.5);
+	    transform: scaleY(.5)
+	}
+
+	.auth_msg_bd {
+	    font-size: 14px;
+	    text-align: left
+	}
+
+	.auth_msg_ft {
+	    margin-top: 2.5em
+	}
+
+	.auth_rights_tips {
+	    font-size: 16px;
+	    padding-bottom: .4em;
+	    color: #000
+	}
+
+	.auth_rights_list {
+	    color: #888
+	}
+
+	.auth_rights_item {
+	    margin: .34em 0;
+	    list-style: none
+	}
+
+	.auth_rights_item_disc {
+	    list-style-type: disc;
+	    list-style-position: inside
+	}
+
+	.auth_rights_lbl {
+	    overflow: hidden
+	}
+
+	.btn_auth_msg_link {
+	    display: inline-block;
+	    font-size: 14px;
+	    text-align: center;
+	    margin: 0;
+	    padding: 0;
+	    margin-top: .65em;
+	    border: none;
+	    background: 0 0;
+	    color: #4088FF
+	}
+
+	.logo_area_game {
+	    padding-top: 6.4em;
+	    text-align: center;
+	    font-size: 125%
+	}
+
+	.logo_weixin {
+	    width: 81px;
+	    height: 81px;
+	    margin: 0 auto 28px;
+	    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKIAAACiCAMAAAD1LOYpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iM0RDNDJDMDZGN0E1NkIyMkFCRDBFRDE3MjkzNjZCQjAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUZBQkI0NEIxNjYzMTFFNDg1M0NENjhDREIxRjNCNTIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUZBQkI0NEExNjYzMTFFNDg1M0NENjhDREIxRjNCNTIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZTM0MmQ4ZDctZTg0MC00MjQzLThiMDItMzNiZGRhOWZiMDJkIiBzdFJlZjpkb2N1bWVudElEPSIzREM0MkMwNkY3QTU2QjIyQUJEMEVEMTcyOTM2NkJCMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PltuSwcAAAJPUExURQAAANXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1T/bs9UAAADFdFJOUwABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWWFlaW1xdXl9hYmNkZmdoaWprbG1ucHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKUlZaXmJqbnJ2en6ChoqOkpaanqKmqq6yur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMp/nq7wAABx9JREFUGBntwY9flPUBB/DPHXDATWiKUaGwwpYDFad5bWeipfkDxeZpbJRY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)center no-repeat;
+	    background-size: 81px;
+	    -webkit-background-size: 81px
+	}
+
+	.logging {
+	    text-align: center;
+	    font-size: .8em;
+	    color: #000;
+	    margin-bottom: 10px
+	}
+
+	.icon_checkbox_default {
+	    float: left;
+	    margin-right: .7em;
+	    margin-top: .26em;
+	    position: relative;
+	    border: 1px solid #D1D1D1;
+	    background-color: #FFF;
+	    border-radius: 3px;
+	    width: 13px;
+	    height: 13px
+	}
+
+	.icon_checkbox_default.checked:before {
+	    font-family: weui;
+	    font-style: normal;
+	    font-weight: 400;
+	    font-variant: normal;
+	    text-transform: none;
+	    text-align: center;
+	    speak: none;
+	    display: inline-block;
+	    vertical-align: middle;
+	    text-decoration: inherit;
+	    content: "\EA08";
+	    color: #09BB07;
+	    font-size: 13px;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -48%)scale(.73);
+	    -webkit-transform: translate(-50%, -48%)scale(.73)
+	}
+
+	.icon_checkbox_default.disabled {
+	    border-color: transparent;
+	    background-color: transparent
+	}
+
+	.icon_checkbox_default.disabled:before {
+	    display: none
+	}
+
+	.icon_checkbox_default.disabled:after {
+	    content: " ";
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin-left: -2px;
+	    margin-top: -2px;
+	    width: 4px;
+	    height: 4px;
+	    background-color: #888;
+	    border-radius: 50%;
+	    -moz-border-radius: 50%;
+	    -webkit-border-radius: 50%
+	}
+
+	input.weui_btn {
+	    border: 1px solid rgba(0, 0, 0, .1)
+	}
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form class="auth_msg confirm confirm_list_black" id="loginform" onSubmit="return false"&gt;
+	&lt;div class="auth_msg_hd"&gt;
+	    &lt;img src="http://mmbiz.qpic.cn/mmbiz/JcdJOBianRFLp2iczpuD4qMJhAIv3MB3nicYMibqlVozjZ8Fc1wroeQUuoeUduLibZSMPDHhttQTUxDVIhZnxd60JbQ/0/0" class="auth_avatar app_icon"&gt;
+	    &lt;strong class="auth_nickname"&gt;微信广告&lt;/strong&gt;
+	&lt;/div&gt;
+	&lt;div class="auth_msg_bd"&gt;
+	    &lt;p class="auth_rights_tips"&gt;即将登录微信广告，请确认是本人操作&lt;/p&gt;
+	    &lt;ul class="auth_rights_list"&gt;
+
+		&lt;li class="auth_rights_item"&gt;
+		    &lt;i class="icon_checkbox_default disabled"&gt;&lt;/i&gt;
+		    &lt;input type="hidden" name="snsapi_login" value="on"&gt;
+		    &lt;span class="auth_rights_lbl"&gt;使用你的帐号登录该应用&lt;/span&gt;
+		&lt;/li&gt;
+	    &lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;div class="auth_msg_ft"&gt;
+	    &lt;button id="js_allow" class="weui_btn weui_btn_primary"&gt;确认登录&lt;/button&gt;
+	    &lt;button id="js_cancel" class="weui_btn weui_btn_default"&gt;取消&lt;/button&gt;
+	&lt;/div&gt;
+	&lt;input type="hidden" name="uuid" value="061mA2DI2yTqt2w1"&gt;
+	&lt;input type="hidden" name="uin" value="NTY4Mzk1MzA4"&gt;
+	&lt;input type="hidden" name="key" value="c83d389af893bb82fd388ae6f3f01f9c1f2d454c08374d2013284783e978d169c47233e2b12334bc079cf7c8d0494445687e2be0df29d7397d8fa118e525c4ae013b7dcd02ed87768096b02ce0e9c703"&gt;
+	&lt;input type="hidden" name="pass_ticket" value="70ZeQsXI9WVt/uGmV84xA6hLyXiP4xboWMxmUCx8ub9C8xQq+8yqQmjDCsCTFkvo"&gt;
+    &lt;/form&gt;
+    &lt;script&gt;
+	var reportUrl = "/connect/authreport?uuid=061mA2DI2yTqt2w1&amp;uin=NTY4Mzk1MzA4&amp;appid=";
+    &lt;/script&gt;
+    &lt;script&gt;
+	! function() {
+	    function a(a, b) {
+		url = window.reportUrl + "&amp;staytime=" + a + "&amp;pageerror=" + b;
+		var c = new Image;
+		c.onload = c.onerror = function() {
+		    c = null
+		}, c.src = url
+	    }
+	    var b = +new Date;
+	    window.onerror = function(b, c, d) {
+		var e = [b, navigator.userAgent];
+		a(0, e.join("||"))
+	    }, window.onpagehide = function() {
+		var c = +new Date,
+		    d = Math.round((c - b) / 1e3),
+		    e = ["wx6489a10c2ec69602", "wx9097d74006e67df3"];
+		e.indexOf(window.appId) &gt; -1 || a(d, "")
+	    }
+	}();
+    &lt;/script&gt;
+    &lt;script&gt;
+	! function() {
+	    function a(a) {
+		return document.getElementById(a)
+	    }
+
+	    function b(a) {
+		return document.getElementsByClassName(a)
+	    }
+
+	    function c(a, b) {
+		var c = " " + b + " ";
+		return (" " + a.className + " ").replace(/[\n\t]/g, " ").indexOf(c) &gt; -1 ? !0 : !1
+	    }
+
+	    function d(a, b) {
+		a.className = a.className + " " + b
+	    }
+
+	    function e(a, b) {
+		a.className = a.className.replace(new RegExp("\\b" + b + "\\b"), "")
+	    }
+
+	    function f() {
+		WeixinJSBridge.call("hideOptionMenu"), WeixinJSBridge.call("hideToolbar"), "object" == typeof WeixinJSBridge &amp;&amp; q &amp;&amp; h()
+	    }
+
+	    function g(b) {
+		if (!r) {
+		    q = !0, r = !0, s = b;
+		    for (var c = a("loginform"), d = {}, e = c.elements, f = e.length - 1; f &gt;= 0; --f) {
+			var g = e[f];
+			g.name &amp;&amp; (d[g.name] = g.value)
+		    }
+		    b ? d.allow = "allow" : d.cancel = "cancel", j.send({
+			type: "POST",
+			url: "/connect/confirm_reply",
+			params: d
+		    }).done(h), setTimeout(function() {
+			r = !1
+		    }, 1e3)
+		}
+	    }
+
+	    function h() {
+		s ? location = "weixin://jump/mainframe" : "object" == typeof WeixinJSBridge &amp;&amp; WeixinJSBridge.invoke("closeWindow")
+	    }
+	    for (var i = "load", j = {
+		    requests: [],
+		    handleEvent: function(a) {
+			this._load(a)
+		    },
+		    _bind: function(a, b, c) {
+			b.addEventListener(a, this, !!c)
+		    },
+		    _unbind: function(a, b, c) {
+			b.removeEventListener(a, this, !!c)
+		    },
+		    _index: function(a, b) {
+			for (var c = a.length; c--;)
+			    if (b.call(a, a[c])) return c;
+			return -1
+		    },
+		    _load: function(a) {
+			var b = a.target,
+			    c = this.requests,
+			    d = this._index(c, function(a) {
+				return a.xhr === b
+			    }),
+			    e = c[d],
+			    f = e.options;
+			this._unbind(i, b), f.onload &amp;&amp; f.onload.call(this, b.responseText), 1 === c.length || c.splice(d, 1)
+		    },
+		    send: function(a) {
+			var b, c = this.requests,
+			    d = c.length - 1,
+			    e = c[d];
+			e &amp;&amp; 4 === e.xhr.readyState ? e.options = a : (c.push({
+			    xhr: new XMLHttpRequest,
+			    options: a
+			}), e = c[++d]), b = e.xhr, this._bind(i, b);
+			var f, g = a.params,
+			    h = [];
+			for (var j in g) h.push(j + "=" + encodeURIComponent(g[j]));
+			f = h.join("&amp;");
+			var k = a.type,
+			    l = a.url;
+			return "GET" === k &amp;&amp; (l += f ? "?" + f : ""), b.open(k, l, !0), "POST" === k &amp;&amp; b.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), b.send(f), this
+		    },
+		    done: function(a) {
+			var b = this.requests,
+			    c = b.length - 1,
+			    d = b[c];
+			d.options.onload = a
+		    }
+		}, k = b("js_checkbox"), l = 0, m = k.length; m &gt; l; ++l) ! function(a) {
+		var b = k[a],
+		    f = b.parentNode;
+		f.onclick = function() {
+		    c(b, "checked") ? (e(b, "checked"), f.children[0].removeAttribute("value")) : (d(b, "checked"), f.children[0].setAttribute("value", "on"))
+		}
+	    }(l);
+	    var n = a("js_close"),
+		o = a("js_allow"),
+		p = a("js_cancel");
+	    n &amp;&amp; (n.onclick = h), o &amp;&amp; (o.onclick = function() {
+		g(!0)
+	    }), p &amp;&amp; (p.onclick = function() {
+		g(!1)
+	    }), document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", f, !1) : document.attachEvent &amp;&amp; document.attachEvent("onWeixinJSBridgeReady", f);
+	    var q = !1,
+		r = !1,
+		s = !1
+	}();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre></div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/welcome-to-nikola/" class="u-url">Welcome to Nikola</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/roberto-alsina/">Roberto Alsina</a>
+            </span></p>
+            <p class="dateline"><a href="posts/welcome-to-nikola/" rel="bookmark"><time class="published dt-published" datetime="2012-03-30T23:00:00-03:00" title="2012-03-30 23:00">2012-03-30 23:00</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="figure">
+<a class="reference external image-reference" href="https://farm1.staticflickr.com/138/352972944_4f9d568680_z.jpg?zz=1"><img alt="Nikola Tesla Corner by nicwest, on Flickr" class="thumbnail" src="https://farm1.staticflickr.com/138/352972944_4f9d568680.jpg"></a>
+</div>
+<p>If you can see this in a web browser, it means you managed to install Nikola,
+and build a site using it. Congratulations!</p>
+<p>Next steps:</p>
+<ul class="simple">
+<li><a class="reference external" href="pages/handbook/">Read the manual</a></li>
+<li><a class="reference external" href="https://getnikola.com">Visit the Nikola website to learn more</a></li>
+<li><a class="reference external" href="galleries/demo/">See a demo photo gallery</a></li>
+<li><a class="reference external" href="pages/listings-demo/">See a demo listing</a></li>
+<li><a class="reference external" href="pages/slides-demo/">See a demo slideshow</a></li>
+<li><a class="reference external" href="pages/dr-nikolas-vendetta/">See a demo of a longer text</a></li>
+</ul>
+<p>Send feedback to <a class="reference external" href="mailto:info@getnikola.com">info@getnikola.com</a>!</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="." rel="prev">Newer posts</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:n.tesla@example.com">Nikola Tesla</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

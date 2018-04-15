@@ -1,0 +1,104 @@
+#+BEGIN_COMMENT
+.. title: Vue 跑起来HelloWorld
+.. slug: hello-vue
+.. date: 2018-03-22
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+
+我们的目的是让浏览器显示一个Hello Vue。
+
+- 最开始，我们当然是新建一个目录，然后初始化npm
+#+BEGIN_SRC shell
+mkdir hello-vue
+cd hello-vue
+npm init
+#+END_SRC
+=npm init= 会询问你的项目初始化的信息，一直默认就行
+
+- 然后，我们现在的web项目都离不开webpack这一款打包工具。我们安装它
+#+BEGIN_SRC shell
+npm i webpack
+#+END_SRC
+i 是install的缩写
+
+- 我们需要一个server来让浏览器请求，所以我们导入webpack-serve
+#+BEGIN_SRC shell
+npm i webpack-serve -D
+#+END_SRC
+-D 选项是--save-dev的缩写
+
+- 我们在 =package.json= 中增加一个dev的script。来启动webpack-server
+  
+- 当然我们创建一个 =index.js= 来作为webpack打包的入口
+
+- 我们引入 =html-webpack-plugin= 工具，这个工具就简单的创建index.html，index.html中会引入我们的index.js。配置我们的 =webpack.config.js= 来使用我们的工具
+#+BEGIN_SRC js
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+    mode: 'development',
+    plugins: [
+        new HtmlWebpackPlugin()
+    ]
+};
+#+END_SRC
+至此，我们的应用应该已经可以访问了，只是暂时还没有内容
+
+- 我们在index.js中将vue内容加载进来，这里假设vue文件为app.vue，当然我们也要设置一下webpack使其能处理vue文件
+#+BEGIN_SRC js
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+        ]
+    }
+};
+#+END_SRC
+
+- 在index.js中把app.vue加载进来，注意这里因为预处理中并不能处理template(vue html内容)的方式，只能使用render方式。
+#+BEGIN_SRC js
+import App from './app.vue'
+import Vue from 'vue'
+
+let div = document.createElement("div")
+div.id="app"
+document.body.appendChild(div)
+
+new Vue({
+    render: (h) => {
+        console.log(h)
+        return h(App)
+    }
+}).$mount("#app")
+#+END_SRC
+
+render方法中的参数h的类型是一个function。接受的参数是一个Vue对象或者一个string。如果是一个string的话，会找这个string对应的Vue。
+所以我们也可以用另外一个方式。
+#+BEGIN_SRC js
+import App from './app.vue'
+import Vue from 'vue'
+
+let div = document.createElement("div")
+div.id="app"
+document.body.appendChild(div)
+
+new Vue({
+    render: (h) => {
+        console.log(h)
+        return h(App)
+    }
+}).$mount("#app")
+#+END_SRC
+
+
+这里的$mount方法和el一样，都是将控件替换为vue对象生成的控件
+
+到这里我们的工作就完成了

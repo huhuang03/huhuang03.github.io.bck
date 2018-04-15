@@ -1,0 +1,13 @@
+#+BEGIN_COMMENT
+.. title: Just Do
+.. slug: just_doing
+.. date: 2018-01-09 00:10:03 UTC+08:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+** Emacs在工程中grep
+运行 ~C-c p s g~

@@ -1,0 +1,24 @@
+#+BEGIN_COMMENT
+.. title: 2017 learn list
+.. slug: 2017_learn_list
+.. date: 2017-09-19 22:10:06 UTC+08:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+** 书籍
+*** Writing gun emacs extensions
+- 语言：英文
+- 描述：学习emacs
+- 链接：[[https://www.dropbox.com/sh/d377uvoq012ts95/AADKgHp5EHE3oIw4AOvYrEtIa?dl=0][books]]
+- 进度：已完成
+
+** 视频
+*** Using Emacs Series
+- 描述：学习Emacs
+- 进度：Done
+- 链接：[[http://cestlaz.github.io/stories/emacs/][http://cestlaz.github.io/stories/emacs/]]
+- 评价：四星，后面有点不通俗易懂
