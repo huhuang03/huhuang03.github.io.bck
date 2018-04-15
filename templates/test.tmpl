@@ -1,0 +1,10 @@
+<%inherit file="post.tmpl"/>
+
+<%block name="content">
+    <p>hahah</p>
+    % if posts: 
+        <p>${posts}</p>
+    % else:
+        <p>No posts</p>
+    % endif
+</%block>
