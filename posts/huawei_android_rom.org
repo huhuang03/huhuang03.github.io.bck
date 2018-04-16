@@ -23,5 +23,31 @@
 # 重进进入fastboot模式
 adb reboot bootloader
 # 查询bootloader状态（是否锁住）
-fasboot oem get-bootinfo
+fastboot oem get-bootinfo
 #+END_SRC
+
+2018年04月15日。我们从华为官网获取到解锁码之后，[[https://emui.huawei.com/cn/unlock_step][继续]]
+
+使用密码解锁
+#+BEGIN_SRC shell
+fastboot oem unlock ****************
+#+END_SRC
+
+按照[[https://developers.google.com/android/images#mysidspr][官方步骤]]，进入解压目录。进行刷机操作
+#+BEGIN_SRC shell
+./flash-all.sh
+#+END_SRC
+
+第一个命令就 =fastboot flash bootloader bootloader-deb-flo-03.14.img= 就 一直出错
+
+#+BEGIN_SRC shell
+FAILED (remote: partition does not exist)
+#+END_SRC
+
+看样子我们要先尝试解决这个问题了
+
+
+模式是分区失败，我不熟悉这个知识点，并且网上好像也没有很好的解决办法。只能等以后来慢慢解决了
+
+
+我搜索了一下官方网上的刷机教程。好像要下载一个[[https://twrp.me/Devices/][recovery]]。我们找一个匹配我们手机型号的recovery。好像我们的手机是荣耀4C。尝试一下4X的recovery吧。不行再尝试5X的
