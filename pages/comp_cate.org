@@ -1,0 +1,15 @@
+#+BEGIN_COMMENT
+.. title: comp_cate
+.. slug: comp_cate
+.. date: 2018-04-16 16:16:24 UTC+08:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+.. template: compCate.tmpl
+#+END_COMMENT
+
+{{% post-list template=contentCate.tmpl %}}{{% /post-list %}}
+
+<script src="/assets/js/pkgindex.js"></script>

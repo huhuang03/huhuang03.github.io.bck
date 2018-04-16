@@ -3,22 +3,6 @@
 
 <%block name="content">
 <h1>${title|h}</h1>
-<h1>Hahah</h1>
-
-% if subcategories:
-    <p>${subcategories}</p>
-% else:
-    <p>No subcategories</p>
-%endif
-
-% if kind:
-    <p>${kind}</p>
-% else:
-    <p>No kind</p>
-%endif
-
-{{% post-list stop=5 %}}{{% /post-list %}}
-<p>Hahaah</p>
 
 % if cat_items:
     % if items:
@@ -52,4 +36,8 @@
     % endfor
     </ul>
 % endif
+
+<script src="/assets/js/inject-category.js"></script>
+
+<div id="category-container"></div>
 </%block>
