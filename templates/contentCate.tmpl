@@ -4,12 +4,6 @@
 <div class="list-group">
     <% categories = {} %>
     % for post in posts:
-        ## % if post.meta('multiver'):
-        ##     <a class="list-group-item sidemenu-item" data-name="${post.meta('slug_versioned')}" href="${post.permalink(lang)}"><span class="text-muted">v${post.meta('dirver')}/</span>${post.title(lang)|h}</a>
-        ## % else:
-        ##     <a class="list-group-item sidemenu-item" data-name="${post.meta('slug_versioned')}" href="${post.permalink(lang)}">${post.title(lang)|h}</a>
-        ## % endif
-
         % if post.meta('category') and isinstance(post.meta('category'), str):
             <% category = post.meta('category') %>
             %if category in categories:
@@ -21,14 +15,20 @@
         % endif
     % endfor
 
-    % for category in categories.keys():
-        <ul>${category}
+    <ul class="list-post">
+        % for category in categories.keys():
+            <li id="${category}" class="item-category-name item-title">
+                ${category}
+                <span class="category-count">( ${len(categories[category])} )</span>
+            </li>
+
             <% cat_posts = categories[category] %>
             % for post in cat_posts:
-                <li>${post.title(lang)|h}</li>
+                <span class="post-date">${post.meta("date")}</span>
+                <a class="post-title" href="${post.permalink()}">${post.title()|h}</a>
             % endfor
-        </ul>
-    % endfor
+        % endfor
+    </ul>
 </div>
 %endif
 </div>
