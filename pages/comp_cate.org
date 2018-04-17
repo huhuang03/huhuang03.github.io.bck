@@ -11,5 +11,3 @@
 #+END_COMMENT
 
 {{% post-list template=contentCate.tmpl %}}{{% /post-list %}}
-
-<script src="/assets/js/pkgindex.js"></script>

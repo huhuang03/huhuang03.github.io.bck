@@ -739,7 +739,7 @@ GITHUB_COMMIT_SOURCE = True
 # LESS_OPTIONS = []
 
 # Compiler to process Sass files.
-# SASS_COMPILER = 'sass'
+SASS_COMPILER = 'sass'
 
 # A list of options to pass to the Sass compiler.
 # Final command is: SASS_COMPILER SASS_OPTIONS file.s(a|c)ss
