@@ -1,0 +1,16 @@
+#+BEGIN_COMMENT
+.. title: custom keyboard
+.. slug: custom-keyboard
+.. date: 2018-04-17
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* 统一IDE
+| desc                         | key                                      |
+|------------------------------+------------------------------------------|
+| 查找一个类（如果是java的话） | cmd + o                                  |
+| 查找一个文件                 | cmd + o（非java）, cmd + shift + o(java) |
