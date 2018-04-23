@@ -51,3 +51,14 @@ FAILED (remote: partition does not exist)
 
 
 我搜索了一下官方网上的刷机教程。好像要下载一个[[https://twrp.me/Devices/][recovery]]。我们找一个匹配我们手机型号的recovery。好像我们的手机是荣耀4C。尝试一下4X的recovery吧。不行再尝试5X的
+
+我们发现刷入recovery
+
+#+BEGIN_SRC shell
+fastboot flash recovery your-recovery.img
+#+END_SRC
+
+之后，使用 =power= 键 + =up= 键不能进入recovery模式，而刷入官方的能进入。也不知道是为什么。我解决不来这个问题。也就是无法刷入第三方的recovery。等待解决这个问题。
+
+
+在解决之前我们先用Genymotion来进行试验吧。

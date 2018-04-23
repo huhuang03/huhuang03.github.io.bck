@@ -1,0 +1,17 @@
+#+BEGIN_COMMENT
+.. title: debug smali
+.. slug: debug-smali
+.. date: 2018-04-23
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+
+今天我们探讨两个问题
+1. 如何debug smali代码
+2. debug smali代码是否要求apk可调试。
+   
+第一个，我们新建一个apk，开启debug。然后按照网上的[[https://www.cnblogs.com/gordon0918/p/5570811.html][教程]]看看能不能debug。即可。
