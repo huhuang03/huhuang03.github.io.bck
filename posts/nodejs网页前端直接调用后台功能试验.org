@@ -1,0 +1,17 @@
+#+BEGIN_COMMENT
+.. title: nodejs网页前端直接调用后台功能试验
+.. slug: nodejs网页前端直接调用后台功能试验
+.. date: 2018-04-23
+.. tags:
+.. category: nodejs
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+问题：
+作为菜鸟的我想，前端如果是vue 按钮点击之后，我能不能直接在数据库中存储东西呢（直接调用后端js）?
+
+这个问题很好验证，写个demo试试就行了，猜想肯定是不行的，因为不是运行在同一个进程下面的。但是实践是第一那啥嘛
+
+果然，编译的过程就报错了。很正常哦。

@@ -16,9 +16,8 @@
 #+BEGIN_SRC shell
 mkdir hello-vue
 cd hello-vue
-npm init
+npm init -y
 #+END_SRC
-=npm init= 会询问你的项目初始化的信息，一直默认就行
 
 - 然后，我们现在的web项目都离不开webpack这一款打包工具。我们安装它
 #+BEGIN_SRC shell
@@ -50,7 +49,9 @@ module.exports = {
 至此，我们的应用应该已经可以访问了，只是暂时还没有内容
 
 - 我们在index.js中将vue内容加载进来，这里假设vue文件为app.vue，当然我们也要设置一下webpack使其能处理vue文件
+
 #+BEGIN_SRC js
+
 module.exports = {
     module: {
         rules: [
@@ -80,25 +81,9 @@ new Vue({
 }).$mount("#app")
 #+END_SRC
 
-render方法中的参数h的类型是一个function。接受的参数是一个Vue对象或者一个string。如果是一个string的话，会找这个string对应的Vue。
-所以我们也可以用另外一个方式。
-#+BEGIN_SRC js
-import App from './app.vue'
-import Vue from 'vue'
+[[https://vuejs.org/v2/guide/render-function.html][render]]方法第一个参数为createElement，是一个方法。具体方法使用方法可以阅读链接。
 
-let div = document.createElement("div")
-div.id="app"
-document.body.appendChild(div)
-
-new Vue({
-    render: (h) => {
-        console.log(h)
-        return h(App)
-    }
-}).$mount("#app")
-#+END_SRC
-
+简单来说就是createElement第一个参数可以为(tag name)|component|(async function return one of those)。
 
 这里的$mount方法和el一样，都是将控件替换为vue对象生成的控件
-
 到这里我们的工作就完成了
