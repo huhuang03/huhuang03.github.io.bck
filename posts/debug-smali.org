@@ -3,7 +3,7 @@
 .. slug: debug-smali
 .. date: 2018-04-23
 .. tags:
-.. category:
+.. category: Cocos2dx-lua 逆向之路
 .. link:
 .. description:
 .. type: text
@@ -14,4 +14,12 @@
 1. 如何debug smali代码
 2. debug smali代码是否要求apk可调试。
    
-第一个，我们新建一个apk，开启debug。然后按照网上的[[https://www.cnblogs.com/gordon0918/p/5570811.html][教程]]看看能不能debug。即可。
+第一个，我们新建一个apk，开启debug。然后按照网上的[[https://www.cnblogs.com/gordon0918/p/5570811.html][教程]]看看能不能debug。即可。如果碰到`shark failed`。可以试试关掉as，重启adb试试。
+
+简单来说有三个步骤，在as中添加一个remote。指定一个端口xxxx
+=adb ps |grep youpackagenae= 得到进程号yyy
+=adb forward tcp:xxx jdwp:yyyy=
+
+按照官方教程做过之后，发现真的可以单步调试啊，我们还可以在Variables点击+号来查看变量的值
+
+我们接着把debug关掉试试。即打一个release包，发现debug为false也行。。。
