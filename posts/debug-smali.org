@@ -10,9 +10,13 @@
 #+END_COMMENT
 
 
-今天我们探讨两个问题
-1. 如何debug smali代码
-2. debug smali代码是否要求apk可调试。
+今天我们探讨几个问题
+- 如何debug smali代码
+- debug smali代码是否要求apk可调试。
+- 能不能重构smali代码并且还是可以调试。
+  好像不能改方法名，改了就黑屏了。。。，改变量名好像可以。
+
+- 微信能否被调试
    
 第一个，我们新建一个apk，开启debug。然后按照网上的[[https://www.cnblogs.com/gordon0918/p/5570811.html][教程]]看看能不能debug。即可。如果碰到`shark failed`。可以试试关掉as，重启adb试试。
 
@@ -22,4 +26,14 @@
 
 按照官方教程做过之后，发现真的可以单步调试啊，我们还可以在Variables点击+号来查看变量的值
 
-我们接着把debug关掉试试。即打一个release包，发现debug为false也行。。。
+第二个问题。答案是 是，可以按照[[https://www.bodkin.ren/index.php/archives/533/][这个教程]]来设置应用可调试
+
+
+我们也可以使用ddms的方法
+首先使用debugable的方式打开apk
+#+BEGIN_SRC shell
+am start -D pkg/activity
+#+END_SRC
+然后在ddms上看到红色小蜘蛛，看到调试端口号。
+然后as中添加一个remote。设置成这个端口号。
+然后运行就可以了。

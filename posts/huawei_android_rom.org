@@ -9,7 +9,7 @@
 .. type: text
 #+END_COMMENT
 
-手上一台华为的机子，想Root。但是kingRoot无法成功，只能先尝试刷官方Room。然后重新kingroot了。
+手上一台华为的机子CHM-TL00H，想Root。但是kingRoot无法成功，只能先尝试刷官方Room。然后重新kingroot了。
 
 操作系统为Mac。
 
@@ -60,5 +60,10 @@ fastboot flash recovery your-recovery.img
 
 之后，使用 =power= 键 + =up= 键不能进入recovery模式，而刷入官方的能进入。也不知道是为什么。我解决不来这个问题。也就是无法刷入第三方的recovery。等待解决这个问题。
 
+需要下载[[https://uptoandroid.com/honor-4c-chm-u01-flash-custom-recovery/][对的]] =recovery.img= 才行，
 
-在解决之前我们先用Genymotion来进行试验吧。
+刷入recovery之后，按住电源+音量Up键。进入你刷入的recovery模式即可。
+
+** 安装xposed
+好像升级到5.0系统才能安装xposed啊。试试
+- 下载[[https://uptoandroid.com/upgrade-huawei-honor-4c-from-kitkat-to-lollipop/][升级包]]
