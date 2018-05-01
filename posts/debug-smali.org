@@ -13,7 +13,8 @@
 今天我们探讨几个问题
 
 * 如何debug smali代码
-- 使用[[https://github.com/wpvsyou/mprop][脚本]]是全局可读写
+前提是应用可调试，我们也可以使得全局可调试
+- 使用[[https://github.com/wpvsyou/mprop][脚本]]使全局可调试
 #+BEGIN_SRC shell
 adb shell "su -c '/data/local/tmp/mprop ro.debuggable 1'"
 adb shell getprop ro.debuggable
