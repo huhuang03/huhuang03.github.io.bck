@@ -1,0 +1,38 @@
+#+BEGIN_COMMENT
+.. title: 探究C memset的宏定义
+.. slug: c-memset-define
+.. date: 2018-05-03
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+
+今天我在看memset的定义值看到了，它的定义的宏是
+#+BEGIN_SRC c
+#define memset(dest, ...) \
+		__builtin___memset_chk (dest, __VA_ARGS__, __darwin_obsz0 (dest))
+#+END_SRC
+
+那么这个宏和我平常看到的宏定义是不一样的。比价高级，那我准备一步一步来剖析这个宏
+
+* \换行
+可见gcc的[[https://gcc.gnu.org/onlinedocs/cpp/Initial-processing.html][文档]]第三条
+大概就是\之后接换行符为 =continud lines= 。gcc会直接将行合并，并且不会添加空格
+
+* 不定参数
+有三个情况
+- 普通
+#+BEGIN_SRC c
+#define debug(format, ...) fprintf(stderr, format, _VA_ARGS_)
+#+END_SRC
+- 自定义参数名
+#+BEGIN_SRC c
+#define debug(format, args...) fprintf(stderr, format, args)
+#+END_SRC
+- 如果不定参数为0个也可以，##前面的逗号会被删除
+#+BEGIN_SRC c
+#define debug(format, args...) fprintf(stderr, format, ##args)
+#+END_SRC
