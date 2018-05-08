@@ -1,0 +1,16 @@
+#+BEGIN_COMMENT
+.. title: emacs 工程管理
+.. slug: emacd-project-manager
+.. date: 2018-05-07
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+
+* 目标
+`spc p p` 打开工程列表
+`spc p o x` x为某个字母，快速打开预设工程。如 =spc p o b= 打开博客工程
+参考ide。cmd + o 快速选择文件
