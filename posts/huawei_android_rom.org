@@ -9,7 +9,11 @@
 .. type: text
 #+END_COMMENT
 
-手上一台华为的机子CHM-TL00H，想Root。但是kingRoot无法成功，只能先尝试刷官方Room。然后重新kingroot了。
+** 动机
+
+手上一台华为的机子CHM-TL00H，想Root。但是KingRoot无法成功，只能先尝试刷谷歌官方Room。然后重新kingroot了。
+
+** 过程
 
 操作系统为Mac。
 
@@ -67,3 +71,8 @@ fastboot flash recovery your-recovery.img
 ** 安装xposed
 好像升级到5.0系统才能安装xposed啊。试试
 - 下载[[https://uptoandroid.com/upgrade-huawei-honor-4c-from-kitkat-to-lollipop/][升级包]]
+  
+但是并没有用。
+
+** 结论
+非官方的刷rom还是太麻烦了。买了一个nexus 5了事
