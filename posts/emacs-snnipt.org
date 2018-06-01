@@ -1,0 +1,22 @@
+#+BEGIN_COMMENT
+.. title: emacs snnipt
+.. slug: emacs-snnipt
+.. date: 2018-05-29
+.. tags:
+.. category: emacs
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+插件地址: [[https://github.com/joaotavora/yasnippet][yasnippet]]
+
+自己的插件地址: ~/.emacs.d/snnipets
+
+** 快捷方式
+新建一个当前mode的snnipt 
+
+暂时还没有找到快捷方式，但是在菜单栏上操作
+
+** 占位文字
+$number来设置光标跳跃
