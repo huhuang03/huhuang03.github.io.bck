@@ -1,0 +1,22 @@
+#+BEGIN_COMMENT
+.. title: android support jar size
+.. slug: 安卓AppCompat包增加体积
+.. date: 2018-06-05
+.. tags:
+.. category: Android
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+AppCompat主要用于低版本设备使用高版本功能。
+
+每次Android Studio生成工程的时候，都会自动附加上AppCompat支持，那么这个包占用多大的体积呢，如果我么删除这个包，会给我们的apk减少多少体积呢。我们做一个测试
+
+删除前： 1.3M (1394521 byte)
+删除后： 193K (197995 byte)
+appcompat包体积： 1.14M (1196526 byte)
+
+
+如果大于大家伙（上百兆的应用）。1.4M确实可以忽略，并且AppCompat或许可以带来很大的方便。
+对于高标准的，不需要AppCompat的话，可以去掉

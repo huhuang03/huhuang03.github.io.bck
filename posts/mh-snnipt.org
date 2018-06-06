@@ -96,6 +96,10 @@ utils.message_box('some note')
 #+BEGIN_SRC lua
 CCommon:get_free_space_of_path(path)
 #+END_SRC
+** 打印table。table to string
+#+BEGIN_SRC lua
+utils.table_print(dat)
+#+END_SRC
 * _G
 #+BEGIN_SRC 
 kEditBoxInputModeNumeric = 2
@@ -322,3 +326,5 @@ ccs_view/confirm_item.lua
 -- 口袋版mode
 -- (game.GameScene):switchToGameMode()
 #+END_SRC
+
+
