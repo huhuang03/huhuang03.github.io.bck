@@ -11,7 +11,7 @@
 
 * 步骤
 - 发送登录请求，stat为no_login
-#+BEGIN_SRC lua
+#+BEGIN_SRC
 D/cocos2d-x debug info(28737): Send fd:64 Prot:1011 stat:no_login dat:urs = "lulu838549337@163.com"
 D/cocos2d-x debug info(28737): name = "北城少年愁。"
 D/cocos2d-x debug info(28737): host = 1294
@@ -25,7 +25,7 @@ D/cocos2d-x debug info(28737): device_type = 12
 D/cocos2d-x debug info(28737): Send Prot:1011 done
 #+END_SRC
 - 因为是socket全双工，服务端会调用登录成功的方法（还有另外两个方法）
-#+BEGIN_SRC lua
+#+BEGIN_SRC
 D/cocos2d-x debug info(28737): Receive Prot:net.base_net.S_SERV_TIME
 D/cocos2d-x debug info(28737): Receive Prot:net.login_net.S_HT_VIP_LEVEL
 D/cocos2d-x debug info(28737): Receive Prot:net.login_net.S_MB_LOGIN

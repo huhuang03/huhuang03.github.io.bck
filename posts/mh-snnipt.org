@@ -9,7 +9,6 @@
 .. type: text
 #+END_COMMENT
 
-
 * Scene
 ** 创建scene
 #+BEGIN_SRC lua
@@ -144,7 +143,7 @@ kCCTMXTileHorizontalFlag = 2147483647
 GL_SUBPIXEL_B
 #+END_SRC
 * lua files
-#+BEGIN_SRC lua
+#+BEGIN_SRC
 _qingfeng0.lua
 global_custom_var.lua
 global_function.lua
@@ -326,5 +325,33 @@ ccs_view/confirm_item.lua
 -- 口袋版mode
 -- (game.GameScene):switchToGameMode()
 #+END_SRC
-
-
+** 判断是否是3.0版本，并且增加了一些版本差异的tag
+ #+BEGIN_SRC lua
+-- 结果是CCDictionary == nil 为false
+Use_Cocos3 = CCDictionary == nil and true or false
+if Use_Cocos3 then
+  GlobalSpriteTag = "cc.Sprite"
+  GlobalSpriteFrameTag = "cc.SpriteFrame"
+  GlobalCCLabelTag = "cc.Label"
+  GlobalImageViewTag = "ccui.ImageView"
+  GlobalLabelTag = "ccui.Text"
+  GlobalLoadingBarTag = "ccui.LoadingBar"
+  GlobalButtonTag = "ccui.Button"
+  GlobalLayoutTag = "ccui.Layout"
+  GlobalWidgetTag = "ccui.Widget"
+  GlobalScale9SpriteTag = "ccui.Scale9Sprite"
+  GlobalCCStringTag = "CCString"
+else
+  GlobalSpriteTag = "CCSprite"
+  GlobalSpriteFrameTag = "CCSpriteFrame"
+  GlobalScale9SpriteTag = "CCScale9Sprite"
+  GlobalCCLabelTag = "CCLabel"
+  GlobalImageViewTag = "ImageView"
+  GlobalLabelTag = "Label"
+  GlobalLoadingBarTag = "LoadingBar"
+  GlobalButtonTag = "Button"
+  GlobalLayoutTag = "Layout"
+  GlobalWidgetTag = "Widget"
+  GlobalCCStringTag = "CCString"
+end 
+ #+END_SRC
