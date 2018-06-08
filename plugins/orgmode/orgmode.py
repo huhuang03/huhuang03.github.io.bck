@@ -71,6 +71,8 @@ class CompileOrgmode(PageCompiler):
             if os.name == 'nt':
                 command[5] = command[5].replace("\\", "\\\\")
 
+            testCommand = "emacs --batch -l '%s' --eval '(nikola-html-export \"%s\" \"%s\")'" % (join(dirname(abspath(__file__)), 'init.el'), abspath(source), abspath(dest))
+            print(testCommand)
             subprocess.check_call(command)
             with io.open(dest, 'r', encoding='utf-8') as inf:
                 output, shortcode_deps = self.site.apply_shortcodes(inf.read(), with_dependencies=True)

@@ -53,13 +53,13 @@ logoImage:setOpacity(255)
 
 ** create scene or a layer?
 *** 定义一个scene
-#+BEGIN_SRC lua
+#+BEGIN_SRC
 CLoginBase = {UI_LAYER = game.Ccs_LoginPanel, 
 EVENT_LIST = {"NewRole", "Record", "ServerList", "Board", "Download", "Fix"}
 , UI_FILE = "ccs_ui/Login_NewBase4.json"}
 #+END_SRC
 *** 使用css_ui_mgr打开
-#+BEGIN_SRC lua
+#+BEGIN_SRC
 open = function(tag, directReturnIfExist)
   -- function num : 0_7 , upvalues : lastOpenTag, ui_list, autoHideOtherView
   lastOpenTag = tag

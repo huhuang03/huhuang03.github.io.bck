@@ -32,7 +32,7 @@ D/cocos2d-x debug info(28737): Receive Prot:net.login_net.S_MB_LOGIN
 #+END_SRC
 
 - 估计返回的data.err是成功吧，会判断登录状态，调用相关方法（这里是登录成功）
-#+BEGIN_SRC lua
+#+BEGIN_SRC
 local LoginFuncDict = {[LE_SUCCESS] = FuncSuccess, [LE_GS_ONLINE] = FuncLoginCollideMobile, [LE_MB_ONLINE] = FuncLoginCollideMobile, [LE_RUDING_ONLINE] = FuncLoginCollidePC, [LE_OFFLINE_TOO_LONG] = FuncChange, [LE_PASSWD_CHANGE] = FuncChange, [LE_TOKEN_WRONG] = FuncChange, [LE_WRONG_SERV] = FuncWrongServ, [LE_WRONG_VER] = FuncWrongVer, [LE_CHECK_ITEM_PASSWORD] = FuncCheckItemPwd, [LE_ITEM_PASSWORD_FAIL] = FuncCheckItemPwdFail, [LE_COMMON_CHECK] = FuncCommonCheck, [LE_NEED_ENTER_HUTONG] = FuncNeedEnterHutong, [LE_DIRECT_SWITCH] = FuncDirectSwitch, [LE_WRONG_HT_VET] = FuncWrongHTVer, [LE_REFRESH_SERVERLIST] = FuncRefreshServerlist, [LE_RESTART_INTO_TRUNK] = FuncRestartIntoTrunk}
 S_MB_LOGIN = function(data)
   -- function num : 0_24 , upvalues : LoginFuncDict, FuncWhatever, utils
@@ -49,7 +49,7 @@ end
 #+END_SRC
 
 - 调用登录成功FuncSuccess方法
-#+BEGIN_SRC lua
+#+BEGIN_SRC
 local FuncSuccess = function(data)
   -- function num : 0_5
   require("game")
