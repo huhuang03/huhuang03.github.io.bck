@@ -1,0 +1,20 @@
+#+BEGIN_COMMENT
+.. title: 微信 界面Intent
+.. slug: mm-search-gzh-intent
+.. date: 2018-06-11
+.. tags:
+.. category: 微信
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* 搜索公众号（添加公众号）
+  微信版本: 6.6.7
+  
+* 公众号首页
+  微信版本: 6.6.7
+#+BEGIN_SRC lua
+I/tonghu  ( 1105): onCreate, intent extra: Contact_BrandIconURL -> http://wx.qlogo.cn/mmhead/Q3auHgzwzM4LmqtGoZNAEmvN6Oicrbc8ukZS2uzUq8zBe22b1ibZzhmg/0,	Contact_Ext_Args -> Bundle[mParcelledData.dataSize=464],	Contact_Signature -> 经典美文，时尚文摘，深度观察，开心驿站，国学赏析等栏目和最新热度话题的发布，开启您的学习休闲之旅！,	Contact_customInfo -> [B@44a94dd8,	Contact_Nick -> 读者,	Contact_User -> gh_d985dfe3a959,	Contact_VUser_Info_Flag -> 8,	Contact_Scene -> 39,
+#+END_SRC
+而只是使用gh_公众号username和scene并不能到公众号信息界面，即这个页面并不会执行请求

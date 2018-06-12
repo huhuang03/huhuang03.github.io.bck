@@ -53,13 +53,13 @@ logoImage:setOpacity(255)
 
 ** create scene or a layer?
 *** 定义一个scene
-#+BEGIN_SRC
+#+BEGIN_SRC lua
 CLoginBase = {UI_LAYER = game.Ccs_LoginPanel, 
 EVENT_LIST = {"NewRole", "Record", "ServerList", "Board", "Download", "Fix"}
 , UI_FILE = "ccs_ui/Login_NewBase4.json"}
 #+END_SRC
 *** 使用css_ui_mgr打开
-#+BEGIN_SRC
+#+BEGIN_SRC lua
 open = function(tag, directReturnIfExist)
   -- function num : 0_7 , upvalues : lastOpenTag, ui_list, autoHideOtherView
   lastOpenTag = tag
@@ -78,7 +78,7 @@ open = function(tag, directReturnIfExist)
     ...
 #+END_SRC
 *** find scene or top layer?
-#+BEGIN_SRC 
+#+BEGIN_SRC lua
 local inst = (ccs_ui_mgr.getInst)("ccs_view.login_new.CLoginBase")
 #+END_SRC
 * 工具
@@ -100,7 +100,7 @@ CCommon:get_free_space_of_path(path)
 utils.table_print(dat)
 #+END_SRC
 * _G
-#+BEGIN_SRC 
+#+BEGIN_SRC lua
 kEditBoxInputModeNumeric = 2
 GL_UNSIGNED_SHORT = 5123
 GL_STENCIL_FUNC = 2962
@@ -143,7 +143,7 @@ kCCTMXTileHorizontalFlag = 2147483647
 GL_SUBPIXEL_B
 #+END_SRC
 * lua files
-#+BEGIN_SRC
+#+BEGIN_SRC lua
 _qingfeng0.lua
 global_custom_var.lua
 global_function.lua
