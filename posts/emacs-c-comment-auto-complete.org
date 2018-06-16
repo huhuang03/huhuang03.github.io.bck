@@ -1,0 +1,41 @@
+#+BEGIN_COMMENT
+.. title: emacs c comment auto complete
+.. slug: emacs-c-comment-auto-complete
+.. date: 2018-06-15
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+我们今天的目标是让emacs中c语言的方法注释，能和eclipse等ide中一样：
+- 能使用 =/**enter= 来插入注释模板。使得自动插入以下模板
+#+BEGIN_SRC c
+/**
+ * 光标在这里
+ */
+#+END_SRC
+- 插入之后，如果输入enter。则自动在下一行继续插入 =*= 。
+#+BEGIN_SRC c
+/**
+ * 光标在这里
+ * 前面的*不用自己输入
+ */
+#+END_SRC
+
+那好，目标我们已经知道了。接下来慢慢实现吧。
+
+
+* 实现
+** 自动插入模板
+*** 使用emacs的abbrev功能
+    我们可以使用emacs的abbrev功能，但是abbrev功能有个局限，就是abbrev key必须是一个单词，
+而 =/**= 并不是一个单词，我们可以通过这个hack的手段，让c认为 =/= 和 =*= 是一个单词的一部分
+#+BEGIN_SRC emacs-lisp
+(modify-syntax-entry ?/ "w" c-mode-syntax-table)
+(modify-syntax-entry ?* "w" c-mode-syntax-table)
+(define-abbrev-table 'c-mode-abbrev-table
+  '(("/**" "/**\n * \n */")))
+#+END_SRC
+但是这样有个问题，就是我们的comment语法高亮没有了，变成了普通文本。所以这种方法可能是不可取的
