@@ -59,3 +59,32 @@ local FuncSuccess = function(data)
   (game.GameScene):switchToGameMode()
 end 
 #+END_SRC
+
+- 经过一些类的初始化，最后会将BlitCanvasNode这个互通版总容器加到页面容器之中
+#+BEGIN_SRC lua
+CMHMobileSprite.init = function(self, parent, w, h)
+  -- function num : 0_4 , upvalues : IMEOpen, SCREEN_W, SCREEN_H
+  self.parent = parent
+  self.baseInst = CCLayer:create()
+  self:setSize(w, h)
+  ;
+  (self.baseInst):setAnchorPoint(ccp(0, 0))
+  ;
+  (self.parent):addChild(self)
+  self.sprite = BlitCanvasNode:create()
+  ;
+  (self.baseInst):addChild(self.sprite)
+  ;
+  (self.baseInst):scheduleUpdateWithPriorityLua(function(dt)
+    -- function num : 0_4_0 , upvalues : self
+    self:update(dt)
+  end
+, 0)
+  require("shadermgr")
+  ;
+  (self.sprite):setShaderProgram((shadermgr.getShaderInCache)("ALPHA_ONE"))
+  self.touches = {}
+  IMEOpen = false
+  SCREEN_W = w
+end
+#+END_SRC
