@@ -28,8 +28,7 @@
 
 
 * 实现
-** 自动插入模板
-*** 使用emacs的abbrev功能
+** 使用emacs的abbrev功能
     我们可以使用emacs的abbrev功能，但是abbrev功能有个局限，就是abbrev key必须是一个单词，
 而 =/**= 并不是一个单词，我们可以通过这个hack的手段，让c认为 =/= 和 =*= 是一个单词的一部分
 #+BEGIN_SRC emacs-lisp
@@ -39,3 +38,19 @@
   '(("/**" "/**\n * \n */")))
 #+END_SRC
 但是这样有个问题，就是我们的comment语法高亮没有了，变成了普通文本。所以这种方法可能是不可取的
+
+** 使用emacs yasnippet包
+大概是新建一个这样的snnipt
+#+BEGIN_SRC d
+# -*- mode: snippet -*-
+# name: comment
+# key: /**
+# --
+/**
+ * $0
+ */
+#+END_SRC
+但是这样也有个问题，就是yasnnipt中expand key是tab键，如果改为Enter键，只能全部改为enter键，也不太符合我们的要求
+
+** 自己写
+  最好的方式是我们能记录前面几个按下的键，如果是 =/**<Enter>= 这个序列的话，我们自己来修改buffer。
