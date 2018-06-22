@@ -1,0 +1,16 @@
+#+BEGIN_COMMENT
+.. title: build android so in terminal
+.. slug: 命令行上编译Android so
+.. date: 2018-06-21
+.. tags: 梦幻西游
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+学习反汇编的时候，我们总是需要自己写一个so文件，拖入IDA，查看生成的汇编代码。
+
+但是编译so文件的时候每次新建一个安卓工程，总是让人非常的抓狂，那么我们如何做到单独编译so文件呢。
+
+但是这里有个问题，我们需要借助android studio的编程提示来帮助编写jni代码，所有这个计划还是暂时搁置吧。
