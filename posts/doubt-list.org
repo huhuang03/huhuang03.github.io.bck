@@ -1,0 +1,20 @@
+#+BEGIN_COMMENT
+.. title: 我的疑惑
+.. slug: doubt-list
+.. date: 2018-06-22
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+在编程上面总有一些自己不能理解的事情，在这里一一列明，并且有时间的时候一一寻找答案
+
+* repo中的分支。
+  涉及到的问题有：
+- repo init之后，是不是manifest中project可以有不同的分支，repo start是不是会在所有的project中checkout出新的分支
+- repo start 是不是会在所有的project中切换出新的分支
+- repo start 之后，重新repo init不同的分支，然后在repo sync，执行的是什么操作，是不是自动merge
+- repo 怎么切换到manifest中的分支。
+  篇幅比较大，我们新开一个blog来讨论这个问题。

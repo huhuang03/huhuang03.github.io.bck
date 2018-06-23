@@ -1,0 +1,39 @@
+#+BEGIN_COMMENT
+.. title: Repo 的疑惑
+.. slug: doubt-repo
+.. date: 2018-06-22
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+接上一篇，我现在主要的疑惑有：
+- repo init中-c（只sync当前分支）有没有作用
+  验证方式：在一个project中有两个分支，分别使用有-c和没有-c的方式来进行sync。看看下载下来的project有没有多个分支
+  验证表明，-c选项是有用的！加上-c之后，只下载manifest中指定的分支，如果不加-c，会下载所有分支
+
+- repo init之后，是不是manifest中project可以有不同的分支，repo start是不是会在所有的project中checkout出新的分支
+  命题错误，repo sync如果加上-c，会只下载当前分支，否则下载所有分支。而sync之后，所有project都处在一个不再任何分支的状态。
+
+- repo start <branch> --all 是不是会在所有的project中切换出新的分支
+  是的，就是在所有的分支上执行git checkout <branch>
+
+- repo start <branch> 之后，然后重新repo sync -c，执行的是什么操作，会不会自动merge
+  会自动merge。如果包含冲突，还会repo sync失败
+  
+- repo start <branch> 在a分支，如果服务端b分支修改，但是manifest中还是指定a分支，repo sync -c会不会自动merge
+  这个时候因为manifest中分支对应的远程代码没有修改，并且-c不会理会其它分支，所有不会同步下来
+
+- repo start <branch> 在a分支，如果服务端b分支修改，但是manifest中还是指定a分支，repo sync（不加-c）会不会自动merge
+  不会自动merge，因为<branch>分支不会自动和服务器b分支合并，只会自动和a分支合并
+
+- repo start <branch> 在a分支，如果服务端b分支修改，并且将manifest中分支改为b，repo sync -c会不会自动merge
+  这个时候因为manifest中分支对应的远程代码没有修改，并且-c不会理会其它分支，所有不会同步下来
+  会自动rebase。在a分支和b分支的共同祖先节点上apple b，然后apply a
+  
+  结论就是repo start <branch>之后的分支，在执行repo sync的操作是，会自动rebase manifest中指定的分支，不管manifest中的分支有没有更改。
+
+- repo 怎么切换到manifest中的分支。
+  使用repo sync -d，会自动切换到manifest中制定分支，但是好像没有分支名称，只是会在manifest中追踪分支的最新版本上detach一个分支出来
