@@ -26,6 +26,7 @@
             % for post in cat_posts:
                 <span class="post-date">${post.meta("date")}</span>
                 <a class="post-title" href="${post.permalink()}">${post.title()|h}</a>
+                <br/>
             % endfor
         % endfor
     </ul>

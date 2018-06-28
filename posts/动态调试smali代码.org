@@ -1,0 +1,16 @@
+#+BEGIN_COMMENT
+.. title: 动态调试smali代码
+.. slug: 动态调试smali代码
+.. date: 2018-06-26
+.. tags:
+.. category: 安卓逆向
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+分一下几个步骤
+- 创建一个Remote的Run config。步骤是Run -> Edit Configuration。port选8700
+- 设置应用可以调试，可以[[https://www.bodkin.ren/index.php/archives/533/][全局可调试]]
+- 在monitor里面点击要调试的应用，会自动将port设置为8700
+- 打断点即可

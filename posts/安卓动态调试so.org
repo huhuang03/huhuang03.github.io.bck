@@ -1,0 +1,18 @@
+#+BEGIN_COMMENT
+.. title: 安卓动态调试so
+.. slug: 安卓动态调试so
+.. date: 2018-06-26
+.. tags:
+.. category: 安卓逆向
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+- 放入android_server。并启动
+- adb forward tcp:23946 tcp:23946 启动端口转发
+- IDA中选择Debugger -> Attach -> Remote ArmLinux/Android debugger
+- hostname填入localhost。点击ok
+- 选择进程
+- 可以使用segment view来选择段，打断点即可
+- 恢复暂停的调试进程

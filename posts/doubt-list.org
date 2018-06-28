@@ -18,3 +18,5 @@
 - repo start 之后，重新repo init不同的分支，然后在repo sync，执行的是什么操作，是不是自动merge
 - repo 怎么切换到manifest中的分支。
   篇幅比较大，我们新开一个blog来讨论这个问题。
+* Android
+- onDraw方法，如果我移到我的layout之外，能不能画上图形
