@@ -18,5 +18,52 @@
 - repo start 之后，重新repo init不同的分支，然后在repo sync，执行的是什么操作，是不是自动merge
 - repo 怎么切换到manifest中的分支。
   篇幅比较大，我们新开一个blog来讨论这个问题。
+
 * Android
 - onDraw方法，如果我移到我的layout之外，能不能画上图形
+  
+* xposed
+** 注入一个类，或者通过provider 被注入进程中的了的方式提供方便的编程
+- 在xposed hook中我们可以加入网络请求lib。可以调用xposed sd中的方法，那么：
+1. 我们能否新建一个同名的类而不报错?
+主进程的类名和我们hook中的类名可以相同，只是类名相同却不是同一个类。。
+#+BEGIN_SRC shell
+I/Xposed: java.lang.IllegalArgumentException: argument 1 should have type com.tonghu.xposeddoubt.PleaseSameClass, got com.tonghu.xposeddoubt.PleaseSameClass
+#+END_SRC
+
+2. 我们能否使用provider的方式，引用被注入进程中的接口，并提供实现？
+#+BEGIN_SRC  shell
+07-05 14:19:58.979 1991-1991/com.tonghu.xposeddoubt I/dalvikvm: Failed resolving Lcom/tonghu/xposeddoubt/PleaseImpInterfaceImpl; interface 106 'Lcom/tonghu/xposeddoubt/PleaseImpInterface;'
+07-05 14:19:58.979 1991-1991/com.tonghu.xposeddoubt W/dalvikvm: Link of class 'Lcom/tonghu/xposeddoubt/PleaseImpInterfaceImpl;' failed
+07-05 14:19:58.979 1991-1991/com.tonghu.xposeddoubt E/dalvikvm: Could not find class 'com.tonghu.xposeddoubt.PleaseImpInterfaceImpl', referenced from method com.tonghu.xpimp.hooks.MainHook$1.afterHookedMethod
+07-05 14:19:58.979 1991-1991/com.tonghu.xposeddoubt W/dalvikvm: VFY: unable to resolve new-instance 107 (Lcom/tonghu/xposeddoubt/PleaseImpInterfaceImpl;) in Lcom/tonghu/xpimp/hooks/MainHook$1;
+07-05 14:19:58.979 1991-1991/com.tonghu.xposeddoubt D/dalvikvm: VFY: replacing opcode 0x22 at 0x0007
+07-05 14:19:58.979 1991-1991/com.tonghu.xposeddoubt I/dalvikvm: Failed resolving Lcom/tonghu/xposeddoubt/PleaseImpInterfaceImpl; interface 106 'Lcom/tonghu/xposeddoubt/PleaseImpInterface;'
+07-05 14:19:58.979 1991-1991/com.tonghu.xposeddoubt W/dalvikvm: Link of class 'Lcom/tonghu/xposeddoubt/PleaseImpInterfaceImpl;' failed
+07-05 14:19:58.979 1991-1991/com.tonghu.xposeddoubt D/dalvikvm: DexOpt: unable to opt direct call 0x03e4 at 0x09 in Lcom/tonghu/xpimp/hooks/MainHook$1;.afterHookedMethod
+07-05 14:19:59.029 1991-1991/com.tonghu.xposeddoubt I/Xposed: java.lang.NoClassDefFoundError: com.tonghu.xposeddoubt.PleaseImpInterfaceImpl
+        at com.tonghu.xpimp.hooks.MainHook$1.afterHookedMethod(MainHook.java:26)
+        at de.robv.android.xposed.XposedBridge.handleHookedMethod(XposedBridge.java:645)
+        at com.tonghu.xposeddoubt.MainActivity.onCreate(Native Method)
+        at android.app.Activity.performCreate(Activity.java:5243)
+        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2140)
+        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2226)
+        at android.app.ActivityThread.access$700(ActivityThread.java:135)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1397)
+        at android.os.Handler.dispatchMessage(Handler.java:102)
+        at android.os.Looper.loop(Looper.java:137)
+        at android.app.ActivityThread.main(ActivityThread.java:4998)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:515)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:777)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:593)
+        at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:132)
+        at dalvik.system.NativeStart.main(Native Method)
+#+END_SRC
+我们不能提供实现，也不能引入注入进程的接口
+
+3. 我们是否能够provider一个类，直接将hook得到的这个类的实例赋值给这个类呢
+不能provider一个要hook的进程中的类，会提示找不到
+
+通过实验之后的结论：不能宿主类的继承关系，也不能通过provider的方式提供方便的编程。给人的感觉是hook中可以对宿主进程中的对象进行操作（调用方法等），可以加入类。但是不能对类的继承树进行调整。
