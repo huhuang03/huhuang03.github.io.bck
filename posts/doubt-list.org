@@ -67,3 +67,7 @@ I/Xposed: java.lang.IllegalArgumentException: argument 1 should have type com.to
 不能provider一个要hook的进程中的类，会提示找不到
 
 通过实验之后的结论：不能宿主类的继承关系，也不能通过provider的方式提供方便的编程。给人的感觉是hook中可以对宿主进程中的对象进行操作（调用方法等），可以加入类。但是不能对类的继承树进行调整。
+* RxJava
+- Observable.interval()什么时候停止，如果我flatMap一下，然后提交一个onComplete。这个Observable是否会停止？
+这要看接下来进行的操作，因为flatMap是一个merge的操作，只有等源Observable停止了，才会停止。所以不会马上停止
+如果是takeWhile。因为takeWhile的subscribeActual中在不满足条件下调用了observer的onComplete方法，所以会马上停止
