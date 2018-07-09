@@ -1,0 +1,18 @@
+#+BEGIN_COMMENT
+.. title: mh todo
+.. slug: mh-todo
+.. date: 2018-07-09
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* 分析BlitCanvasNode是什么
+目前因为他可以用CCLayer来add，所以应该是一个节点（CCNode），那么可能就是c++中自己定义的一个节点。
+要看一下cocos2d中c++自定义节点的内容
+然后他导出给了lua使用，可以看一下c++的导出到lua
+
+** c入门
+** c++入门
