@@ -88,8 +88,6 @@
     ("scheme" . "scheme")
     ("sh" . "sh")
     ("sql" . "sql")
-    ("lua" . "lua")
-    ("log" . "log")
     ("sqlite" . "sqlite3")
     ("tcl" . "tcl"))
   "Alist between org-babel languages and Pygments lexers.
