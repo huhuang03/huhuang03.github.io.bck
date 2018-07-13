@@ -25,7 +25,10 @@
     ${pagination.page_navigation(current_page, page_links, prevlink, nextlink, prev_next_links_reversed)}
 % endif
 <div>HelloIndex</div>
-${index_file}
+% for post in posts:
+    <div>111</div>
+    ${post.meta('category')}
+% endfor
 <div class="postindex">
 % for post in posts:
     <article class="h-entry post-${post.meta('type')}">
