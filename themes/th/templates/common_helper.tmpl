@@ -1,0 +1,54 @@
+## -*- coding: utf-8 -*-
+<%def name="cate()">
+    ## create and fill categories
+    <% categories = {} %>
+    % if posts:
+      % for post in posts:
+          % if post.meta('category') and isinstance(post.meta('category'), str):
+              <% category = post.meta('category') %>
+              %if category in categories:
+                  <% categories[category].append(post) %>
+              % else:
+                  <% categories[category] = [] %>
+                  <% categories[category].append(post) %>
+              % endif
+          % endif
+      % endfor
+      <ul id="cate_index">
+          % for category in categories.keys():
+          <li cate="${category}" onclick="changeSideCate('${category}')">
+            ${category}
+          </li>
+          % endfor
+      </ul>
+      <div id="cate_posts_list">
+          % for category in categories.keys():
+            <div class="cate_posts_item unactive" cate="${category}">
+                % for post in categories[category]:
+                  <ul>
+                    <li>
+                      ${post.title()|h}
+                    </li>
+                  </ul>
+                % endfor
+            </div>
+          % endfor
+      </div>
+
+      <script>
+        function changeSideCate(cate) {
+          var items = document.getElementsByClassName("cate_posts_item")
+          for (var item of items) {
+            var item_cate = item.getAttribute("cate")
+            item.classList.remove('active')
+            item.classList.remove('unactive')
+            if (cate === item_cate) {
+              item.classList.add('active')
+            } else {
+              item.classList.add('unactive')
+            }
+          }
+        }
+      </script>
+    %endif
+</%def>
