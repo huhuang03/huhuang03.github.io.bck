@@ -4,5 +4,18 @@
 }
 
 #side_cate {
+	display: flex;
+}
+
+#cate_posts_list {
+	display: flex;
 	min-width: 200px;
+}
+
+#cate_index {
+	min-width: 200px;
+}
+
+.unactive {
+	display: none;
 }
